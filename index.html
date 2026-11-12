@@ -220,6 +220,7 @@ details.code[open] summary::before { transform: rotate(90deg); }
         <div class="group">
           <span class="label" id="lbl-opts">옵션</span>
           <div class="chips" role="group" aria-labelledby="lbl-opts">
+            <button class="opt" id="titleopt" aria-pressed="true" type="button" title="제목·소제목과 그 장식">제목</button>
             <button class="opt" id="pol" aria-pressed="true" type="button">폴라로이드</button>
             <button class="opt" id="tape" aria-pressed="false" type="button">테이프</button>
             <button class="opt" id="emoji" aria-pressed="true" type="button">이모지</button>
@@ -257,7 +258,7 @@ details.code[open] summary::before { transform: rotate(90deg); }
           <ol class="caps" id="rowtexts"></ol>
         </div>
         <details class="fold" id="f-text-wrap">
-          <summary>제목 · 소제목 · 날짜 <span class="hint" id="text-count"></span></summary>
+          <summary id="fold-sum">제목 · 소제목 · 날짜 <span class="hint" id="text-count"></span></summary>
           <p class="hint">비워둔 칸은 미리보기에만 흐리게 보이고, 코드에서는 빠져요.</p>
           <div id="f-text">
             <div class="field" id="f-title"><label for="in-title">제목</label><input type="text" id="in-title" autocomplete="off"></div>
@@ -292,7 +293,7 @@ details.code[open] summary::before { transform: rotate(90deg); }
 (function () {
   var DATA = JSON.parse(document.getElementById('data').textContent);
   var THEMES = DATA.themes, LAYOUTS = DATA.layouts, T = DATA.templates;
-  var state = { theme: 'cream', layout: '01', arr: 'scroll', pol: true, text: false, emoji: true, tape: false, anim: true, cols: 2, rows: 1, color: {}, rowText: false };
+  var state = { theme: 'cream', layout: '01', arr: 'scroll', pol: true, text: false, emoji: true, tape: false, anim: true, cols: 2, rows: 1, color: {}, rowText: false, titleOn: true };
   var ARR = [{ id: 'scroll', name: '가로 스크롤' }, { id: 'grid', name: '그리드' }];
   function layoutFor() {
     if (state.arr === 'scroll') return state.text ? '07' : (state.pol ? '01' : '02');
@@ -351,8 +352,10 @@ details.code[open] summary::before { transform: rotate(90deg); }
   function capCount(inf) { return userPhotos.length || (inf.caps ? inf.caps.length : 0); }
   // 비워둔 칸: 그 줄을 코드에서 아예 지웁니다. 제목과 소제목을 둘 다 숨기면 머리 부분 장식도 함께 빠져요.
   var NOTE = '(?:[ \\t]*<!--[^>]*?(?:제목|소제목)[^>]*?-->\\n)?';
-  function hideParts(s) {
-    var h = { title: !content.title.trim(), sub: !content.sub.trim(), footer: !content.footer.trim() };
+  // 지울 줄: 코드에서는 비워둔 칸, 미리보기·코드 모두에서는 '제목' 옵션을 끈 경우의 제목·소제목
+  function hideParts(s, preview) {
+    var off = !state.titleOn;
+    var h = { title: off || (!preview && !content.title.trim()), sub: off || (!preview && !content.sub.trim()), footer: !preview && !content.footer.trim() };
     if (h.title && h.sub) {
       s = s.replace(new RegExp(NOTE + '[ \\t]*<div class="album-heading">[\\s\\S]*?<\\/div>\\n?'), '');
       s = s.replace(/[ \t]*<p class="emoji-garland"[^>]*>[\s\S]*?<\/p>\n?/, '');
@@ -373,7 +376,8 @@ details.code[open] summary::before { transform: rotate(90deg); }
     return s;
   }
   function fill(s, preview) {
-    s = preview ? markEmpty(s) : hideParts(s);
+    s = hideParts(s, preview);
+    if (preview) s = markEmpty(s);
     var inf = info(s);
     ['title', 'sub', 'footer'].forEach(function (k) {
       var v = content[k].trim();
@@ -604,6 +608,8 @@ details.code[open] summary::before { transform: rotate(90deg); }
     var rtBtn = document.getElementById('rowtext'), isScroll = state.arr === 'scroll';
     rtBtn.hidden = !info(raw).hasPhotos; rtBtn.setAttribute('aria-pressed', state.rowText);
     syncRowInputs();
+    var tb = document.getElementById('titleopt'), hasHead = info(raw).title !== null || info(raw).sub !== null;
+    tb.disabled = !hasHead; tb.setAttribute('aria-pressed', hasHead && state.titleOn);
     var canTape = info(raw).hasPhotos;
     tapeBtn.disabled = !canTape;
     tapeBtn.setAttribute('aria-pressed', canTape && state.tape);
@@ -617,7 +623,7 @@ details.code[open] summary::before { transform: rotate(90deg); }
     saveOpts();
   }
   function saveOpts() {
-    try { localStorage.setItem('album-opts', JSON.stringify({ emoji: state.emoji, tape: state.tape, anim: state.anim, cols: state.cols, rows: state.rows, color: state.color, rowText: state.rowText })); } catch (e) {}
+    try { localStorage.setItem('album-opts', JSON.stringify({ emoji: state.emoji, tape: state.tape, anim: state.anim, cols: state.cols, rows: state.rows, color: state.color, rowText: state.rowText, titleOn: state.titleOn })); } catch (e) {}
   }
   function set(p) { for (var k in p) state[k] = p[k]; render(); }
 
@@ -639,7 +645,8 @@ details.code[open] summary::before { transform: rotate(90deg); }
       $('f-' + k).hidden = inf[k] === null;
       inputs[k].placeholder = k === 'footer' ? '예: 2026. 11. 11. · 이름' : '비워두면 코드에서 빠져요';
     });
-    $('f-text-wrap').hidden = inf.title === null && inf.sub === null && inf.footer === null;
+    if (!state.titleOn) { $('f-title').hidden = true; $('f-sub').hidden = true; }
+    $('f-text-wrap').hidden = $('f-title').hidden && $('f-sub').hidden && $('f-footer').hidden;
     $('f-photos').hidden = !inf.hasPhotos;
     $('f-caps').hidden = !inf.caps;
     $('caps-warn').hidden = true;
@@ -803,6 +810,7 @@ details.code[open] summary::before { transform: rotate(90deg); }
 
   emojiBtn.onclick = function () { set({ emoji: !state.emoji }); };
   tapeBtn.onclick = function () { set({ tape: !state.tape }); };
+  document.getElementById('titleopt').onclick = function () { set({ titleOn: !state.titleOn }); };
   document.getElementById('rowtext').onclick = function () { set({ rowText: !state.rowText }); };
   var rowKey = '';
   function syncRowInputs() {
@@ -858,7 +866,7 @@ details.code[open] summary::before { transform: rotate(90deg); }
     if (m && T[m[1]] && T[m[1]][m[2]]) { state.theme = m[1]; fromLayout(m[2]); return true; }
     return false;
   }
-  try { var o = JSON.parse(localStorage.getItem('album-opts') || '{}'); if (typeof o.emoji === 'boolean') state.emoji = o.emoji; if (typeof o.tape === 'boolean') state.tape = o.tape; if (typeof o.anim === 'boolean') state.anim = o.anim; if (o.cols >= 1 && o.cols <= 8) state.cols = o.cols | 0; if (typeof o.rowText === 'boolean') state.rowText = o.rowText; if (o.color && typeof o.color === 'object') Object.keys(o.color).forEach(function (k) { if (/^#[0-9a-f]{6}$/i.test(o.color[k])) state.color[k] = o.color[k]; }); } catch (e) {}
+  try { var o = JSON.parse(localStorage.getItem('album-opts') || '{}'); if (typeof o.emoji === 'boolean') state.emoji = o.emoji; if (typeof o.tape === 'boolean') state.tape = o.tape; if (typeof o.anim === 'boolean') state.anim = o.anim; if (o.cols >= 1 && o.cols <= 8) state.cols = o.cols | 0; if (typeof o.rowText === 'boolean') state.rowText = o.rowText; if (typeof o.titleOn === 'boolean') state.titleOn = o.titleOn; if (o.color && typeof o.color === 'object') Object.keys(o.color).forEach(function (k) { if (/^#[0-9a-f]{6}$/i.test(o.color[k])) state.color[k] = o.color[k]; }); } catch (e) {}
   fromHash();
   window.addEventListener('hashchange', function () { if (fromHash()) render(); });
   render();
