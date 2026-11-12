@@ -1,0 +1,100 @@
+<style>
+.night-grid-plain {
+  width: 100%; max-width: 1100px; margin: 30px auto; padding: 55px 35px 35px;
+  box-sizing: border-box; position: relative; isolation: isolate;
+   
+   border: 2px solid #4d506c; border-radius: 16px;
+  box-shadow: 0 0 24px #d2bb7e40, inset 0 0 35px #d2bb7e26; font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+
+    background-color: #171a2c; background-image: radial-gradient(circle at 463px 476px, #dadeff73 0.8px, transparent 1.6px), radial-gradient(circle at 189px 524px, #dadeff73 0.8px, transparent 1.6px), radial-gradient(circle at 96px 457px, #f5e2b099 0.7px, transparent 1.5px), radial-gradient(circle at 551px 42px, #f5e2b066 0.9px, transparent 1.7px), radial-gradient(circle at 463px 161px, #f5e2b099 0.9px, transparent 1.7px), radial-gradient(circle at 60px 36px, #dadeff73 0.6px, transparent 1.4px), radial-gradient(circle at 614px 30px, #ffffff66 1.0px, transparent 1.8px), radial-gradient(circle at 451px 200px, #ffffff66 0.8px, transparent 1.6px), radial-gradient(circle at 511px 4px, #f5e2b066 0.9px, transparent 1.7px), radial-gradient(circle at 284px 416px, #f5e2b099 1.1px, transparent 1.9px), radial-gradient(circle at 260px 322px, #ffffff66 1.0px, transparent 1.8px), radial-gradient(circle at 30px 71px, #f5e2b099 0.8px, transparent 1.6px), radial-gradient(circle at 410px 110px, #f5e2b066 1.0px, transparent 1.8px), radial-gradient(circle at 68px 17px, #f5e2b099 1.0px, transparent 1.8px), radial-gradient(circle at 218px 214px, #f5e2b099 1.1px, transparent 1.9px), radial-gradient(circle at 481px 384px, #f5e2b066 1.1px, transparent 1.9px), radial-gradient(circle at 429px 74px, #dadeff73 0.8px, transparent 1.6px), radial-gradient(circle at 276px 344px, #ffffff66 0.6px, transparent 1.4px), radial-gradient(circle at 15px 419px, #f5e2b099 1.0px, transparent 1.8px), radial-gradient(circle at 137px 252px, #f5e2b099 0.9px, transparent 1.7px), radial-gradient(circle at 61px 476px, #dadeff73 1.0px, transparent 1.8px), radial-gradient(circle at 572px 192px, #dadeff73 0.8px, transparent 1.6px), radial-gradient(circle at 134px 429px, #f5e2b099 0.9px, transparent 1.7px), radial-gradient(circle at 404px 430px, #f5e2b099 1.1px, transparent 1.9px), radial-gradient(circle at 276px 311px, #f5e2b099 1.1px, transparent 1.9px), radial-gradient(circle at 215px 191px, #f5e2b099 0.7px, transparent 1.5px), radial-gradient(circle at 43px 149px, #ffffff66 0.6px, transparent 1.4px), radial-gradient(circle at 9px 336px, #f5e2b066 1.0px, transparent 1.8px), radial-gradient(circle at 75px 76px, #dadeff73 0.6px, transparent 1.4px), radial-gradient(circle at 15px 377px, #f5e2b066 0.7px, transparent 1.5px), radial-gradient(circle at 130px 495px, #dadeff73 1.0px, transparent 1.8px), radial-gradient(circle at 395px 187px, #ffffff66 0.9px, transparent 1.7px), radial-gradient(circle at 233px 255px, #dadeff73 0.9px, transparent 1.7px), radial-gradient(circle at 567px 201px, #f5e2b066 0.9px, transparent 1.7px), linear-gradient(145deg, #252a45, #141725); background-size: 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 100% 100%;
+}
+.night-grid-plain *, .night-grid-plain *::before, .night-grid-plain *::after { box-sizing: border-box; }
+.night-grid-plain::before, .night-grid-plain::after { position: absolute; top: 12px; font-size: 2.5rem; line-height: 1; pointer-events: none; }
+.night-grid-plain::before { content: '🌙'; left: 10px; transform: rotate(-18deg); }
+.night-grid-plain::after { content: '🪐'; right: 10px; transform: rotate(18deg); }
+.night-grid-plain .album-heading { position: relative; margin-bottom: 45px; text-align: center; color: #f0dfb4; }
+.night-grid-plain .album-heading::before { content: 'LET THE NIGHT REMEMBER'; display: block; margin-bottom: 14px; color: #b4b6cf; font: 0.65rem Georgia, serif; letter-spacing: 0.16em; }
+.night-grid-plain .album-heading::after { content: '✦ · ✧ · ✦'; display: block; margin-top: 18px; letter-spacing: 0.25em; }
+.night-grid-plain .album-heading h2 { display: inline-block; max-width: 100%; margin: 0; padding-bottom: 10px; color: #f0dfb4; border-bottom: 2px dashed #4d506c; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.4; overflow-wrap: anywhere; text-shadow: 0 0 18px #e7d1972e; }
+.night-grid-plain .album-heading p { margin: 15px 0 0; color: #b4b6cf; font-size: 0.9rem; line-height: 1.6; }
+
+.night-grid-plain .photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 40px 32px; isolation: isolate; }
+
+.night-grid-plain .photo-grid img { min-width: 0; position: relative; transform: none; }
+
+.night-grid-plain .photo-grid img {
+  display: block !important; box-sizing: border-box !important;
+  width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+  height: auto !important; margin: 0 !important;
+  padding: 0 !important; object-fit: contain !important;
+  background-color: #171a2c; border: 1px solid #d2bb7e4d; border-radius: 18px;
+  box-shadow: 0 6px 12px #00000066,0 0 8px #d2bb7e66,0 0 18px #d2bb7e3d; color: #e9e1d0; font-size: 0.8rem;
+  transform-origin: 50% 50%; z-index: 0;
+}
+
+
+.night-grid-plain .album-footer { margin-top: 45px; padding-top: 18px; border-top: 1px dashed #4d506c; color: #b4b6cf; text-align: right; font-size: 0.85rem; line-height: 1.6; }
+@media (max-width: 900px) {
+  .night-grid-plain .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+}
+@media (max-width: 600px) {
+  .night-grid-plain { padding: 55px 24px 30px; }
+  .night-grid-plain .photo-grid { grid-template-columns: minmax(0, 1fr); }
+
+}
+
+/* 업로드 편집기가 추가한 p도 사진 한 칸으로 처리합니다. */
+.night-grid-plain .photo-grid > p {
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    height: auto !important; margin: 0 !important; padding: 0 !important;
+    line-height: 0; overflow: visible; align-self: start;
+}
+/* 배경 애니메이션 시작 */
+.night-grid-plain .night-sky { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.night-grid-plain .night-sky::before { content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 296px 85px, #ffffff 0.9px, transparent 1.7px), radial-gradient(circle at 433px 388px, #fff6d8 1.3px, transparent 2.1px), radial-gradient(circle at 196px 273px, #fff6d8 1.2px, transparent 2.0px), radial-gradient(circle at 635px 465px, #fff6d8 1.5px, transparent 2.3px), radial-gradient(circle at 87px 510px, #f5e2b0 1.2px, transparent 2.0px), radial-gradient(circle at 642px 441px, #fff6d8 1.2px, transparent 2.0px), radial-gradient(circle at 210px 36px, #f5e2b0 1.3px, transparent 2.1px), radial-gradient(circle at 176px 221px, #ffffff 1.6px, transparent 2.4px), radial-gradient(circle at 579px 377px, #ffffff 1.6px, transparent 2.4px), radial-gradient(circle at 676px 321px, #ffffff 1.3px, transparent 2.1px), radial-gradient(circle at 181px 494px, #ffffff 1.3px, transparent 2.1px), radial-gradient(circle at 691px 167px, #fff6d8 1.0px, transparent 1.8px), radial-gradient(circle at 546px 331px, #f5e2b0 1.4px, transparent 2.2px), radial-gradient(circle at 200px 596px, #fff6d8 1.0px, transparent 1.8px), radial-gradient(circle at 93px 632px, #fff6d8 1.2px, transparent 2.0px), radial-gradient(circle at 527px 36px, #dfe3ff 1.2px, transparent 2.0px), radial-gradient(circle at 448px 540px, #fff6d8 1.3px, transparent 2.1px), radial-gradient(circle at 467px 615px, #dfe3ff 1.3px, transparent 2.1px), radial-gradient(circle at 433px 454px, #ffffff 0.9px, transparent 1.7px), radial-gradient(circle at 93px 423px, #dfe3ff 0.8px, transparent 1.6px), radial-gradient(circle at 369px 442px, #fff6d8 1.3px, transparent 2.1px), radial-gradient(circle at 374px 586px, #fff6d8 1.4px, transparent 2.2px), radial-gradient(circle at 218px 517px, #ffffff 1.1px, transparent 1.9px), radial-gradient(circle at 7px 522px, #ffffff 1.3px, transparent 2.1px), radial-gradient(circle at 230px 24px, #fff6d8 1.0px, transparent 1.8px), radial-gradient(circle at 163px 22px, #ffffff 1.2px, transparent 2.0px);
+    background-size: 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px;
+    animation: night-twinkle 2.8s ease-in-out infinite alternate; }
+.night-grid-plain .night-sky span { position: absolute; height: 2px; border-radius: 2px; overflow: hidden; font-size: 0; line-height: 0; color: transparent;
+    background: linear-gradient(90deg, #fffbe9, #fffbe900); box-shadow: -2px 0 6px #fffbe999; opacity: 0;
+    animation: night-shoot linear infinite; }
+.night-grid-plain .night-sky span:nth-child(1) { top: 70px; left: 78%; width: 120px; animation-duration: 5.2s; animation-delay: 0.6s; }
+.night-grid-plain .night-sky span:nth-child(2) { top: 40px; left: 52%; width: 90px; animation-duration: 4.3s; animation-delay: 1.9s; }
+.night-grid-plain .night-sky span:nth-child(3) { top: 150px; left: 94%; width: 140px; animation-duration: 6.1s; animation-delay: 3.2s; }
+.night-grid-plain .night-sky span:nth-child(4) { top: 110px; left: 36%; width: 100px; animation-duration: 4.8s; animation-delay: 2.6s; }
+.night-grid-plain .night-sky span:nth-child(5) { top: 230px; left: 70%; width: 130px; animation-duration: 6.8s; animation-delay: 4.4s; }
+.night-grid-plain .night-sky span:nth-child(6) { top: 20px; left: 88%; width: 80px; animation-duration: 3.9s; animation-delay: 0.2s; }
+
+@keyframes night-twinkle { from { opacity: .15; } to { opacity: 1; } }
+@keyframes night-shoot {
+    0% { opacity: 0; transform: translate(0, 0) rotate(-30deg); }
+    2% { opacity: 1; }
+    10% { opacity: 0; transform: translate(-300px, 173px) rotate(-30deg); }
+    100% { opacity: 0; transform: translate(-300px, 173px) rotate(-30deg); }
+}
+@media (prefers-reduced-motion: reduce) { .night-grid-plain .night-sky::before { animation: none; opacity: .7; } .night-grid-plain .night-sky span { display: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="night-grid-plain">
+    <div class="night-sky" aria-hidden="true"><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span></div>
+  <!-- ✏️ 1. 제목과 소제목 -->
+  <div class="album-heading">
+    <h2>제목</h2>
+    <p>소제목</p>
+  </div>
+
+  <!-- ✏️ 2. 이곳에 사진 코드를 한꺼번에 넣으세요. -->
+  <div class="photo-grid">
+    <img src="이미지링크1" alt="사진1">
+    <img src="이미지링크2" alt="사진2">
+    <img src="이미지링크3" alt="사진3">
+    <img src="이미지링크4" alt="사진4">
+    <img src="이미지링크5" alt="사진5">
+    <img src="이미지링크6" alt="사진6">
+  </div>
+
+  <!-- ✏️ 3. 날짜 또는 서명 -->
+  <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

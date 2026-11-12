@@ -1,0 +1,96 @@
+<style>
+.pink-grid-polaroid {
+  width: 100%; max-width: 1100px; margin: 30px auto; padding: 55px 35px 35px;
+  box-sizing: border-box; position: relative; isolation: isolate;
+   
+   border: 2px solid #e9b7c9; border-radius: 16px;
+  box-shadow: 0 0 24px #e99bb840, inset 0 0 35px #e99bb826; font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+
+    background-color: #fff5f8; background-image: linear-gradient(90deg, #e9a5be1f 50%, transparent 50%), linear-gradient(#e9a5be1f 50%, transparent 50%); background-size: 32px 32px;
+}
+.pink-grid-polaroid *, .pink-grid-polaroid *::before, .pink-grid-polaroid *::after { box-sizing: border-box; }
+.pink-grid-polaroid::before, .pink-grid-polaroid::after { position: absolute; top: 12px; font-size: 2.5rem; line-height: 1; pointer-events: none; }
+.pink-grid-polaroid::before { content: '🎀'; left: 10px; transform: rotate(-18deg); }
+.pink-grid-polaroid::after { content: '🍓'; right: 10px; transform: rotate(18deg); }
+.pink-grid-polaroid .album-heading { position: relative; margin-bottom: 45px; text-align: center; color: #984b68; }
+.pink-grid-polaroid .album-heading::before { content: 'SWEET LITTLE MOMENTS'; display: block; margin-bottom: 14px; color: #ad6b83; font: 0.65rem Georgia, serif; letter-spacing: 0.16em; }
+.pink-grid-polaroid .album-heading::after { content: '♡'; display: block; margin-top: 18px; letter-spacing: 0.25em; }
+.pink-grid-polaroid .album-heading h2 { display: inline-block; max-width: 100%; margin: 0; padding-bottom: 10px; color: #984b68; border-bottom: 2px dashed #e9b7c9; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.4; overflow-wrap: anywhere; text-shadow: none; }
+.pink-grid-polaroid .album-heading p { margin: 15px 0 0; color: #ad6b83; font-size: 0.9rem; line-height: 1.6; }
+
+.pink-grid-polaroid .photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 40px 32px; isolation: isolate; }
+
+.pink-grid-polaroid .photo-grid img { min-width: 0; position: relative; transform: rotate(var(--tilt, 0deg)); }
+
+.pink-grid-polaroid .photo-grid img {
+  display: block !important; box-sizing: border-box !important;
+  width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+  height: auto !important; margin: 0 !important;
+  padding: 12px 12px 44px !important; object-fit: contain !important;
+  background-color: #fffdfd; border: 1px solid #e9b7c9; border-radius: 3px;
+  box-shadow: 0 6px 12px #00000066,0 0 8px #e99bb866,0 0 18px #e99bb83d; color: #8e5268; font-size: 0.8rem;
+  transform-origin: 50% 50%; z-index: 0;
+}
+
+.pink-grid-polaroid .photo-grid > :nth-child(5n + 1) { --tilt: -2deg; }
+.pink-grid-polaroid .photo-grid > :nth-child(5n + 2) { --tilt: 1.5deg; }
+.pink-grid-polaroid .photo-grid > :nth-child(5n + 3) { --tilt: -1deg; }
+.pink-grid-polaroid .photo-grid > :nth-child(5n + 4) { --tilt: 2deg; }
+.pink-grid-polaroid .photo-grid > :nth-child(5n + 5) { --tilt: -0.5deg; }
+
+.pink-grid-polaroid .album-footer { margin-top: 45px; padding-top: 18px; border-top: 1px dashed #e9b7c9; color: #ad6b83; text-align: right; font-size: 0.85rem; line-height: 1.6; }
+@media (max-width: 900px) {
+  .pink-grid-polaroid .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+}
+@media (max-width: 600px) {
+  .pink-grid-polaroid { padding: 55px 24px 30px; }
+  .pink-grid-polaroid .photo-grid { grid-template-columns: minmax(0, 1fr); }
+
+}
+
+/* 업로드 편집기가 추가한 p도 사진 한 칸으로 처리합니다. */
+.pink-grid-polaroid .photo-grid > p {
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    height: auto !important; margin: 0 !important; padding: 0 !important;
+    line-height: 0; overflow: visible; align-self: start;
+}
+/* 배경 애니메이션 시작 */
+.pink-grid-polaroid .pink-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.pink-grid-polaroid .pink-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.pink-grid-polaroid .pink-anim span { top: 105%; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 22'%3E%3Cpath fill='%23ec86ab' d='M12 21s-8-5.2-10.4-10C-.3 6.6 2.4 2 6.6 2c2.4 0 4.1 1.3 5.4 3.2C13.3 3.3 15 2 17.4 2c4.2 0 6.9 4.6 5 9-2.4 4.8-10.4 10-10.4 10z'/%3E%3C/svg%3E") center / contain no-repeat; opacity: 0;
+    animation-name: pk-rise, pk-sway; animation-timing-function: linear, ease-in-out; animation-iteration-count: infinite, infinite; animation-direction: normal, alternate; }
+.pink-grid-polaroid .pink-anim span:nth-child(1) { left: 8%; width: 21px; height: 21px; animation-duration: 15s, 2.6s; animation-delay: 0s, 0s; }
+.pink-grid-polaroid .pink-anim span:nth-child(2) { left: 23%; width: 15px; height: 15px; animation-duration: 19s, 2.6s; animation-delay: 6s, 0s; }
+.pink-grid-polaroid .pink-anim span:nth-child(3) { left: 41%; width: 24px; height: 24px; animation-duration: 17s, 2.6s; animation-delay: 3s, 0s; }
+.pink-grid-polaroid .pink-anim span:nth-child(4) { left: 62%; width: 17px; height: 17px; animation-duration: 21s, 2.6s; animation-delay: 9s, 0s; }
+.pink-grid-polaroid .pink-anim span:nth-child(5) { left: 78%; width: 22px; height: 22px; animation-duration: 16s, 2.6s; animation-delay: 12s, 0s; }
+.pink-grid-polaroid .pink-anim span:nth-child(6) { left: 91%; width: 14px; height: 14px; animation-duration: 20s, 2.6s; animation-delay: 4s, 0s; }
+.pink-grid-polaroid .pink-anim span:nth-child(7) { left: 52%; width: 18px; height: 18px; animation-duration: 23s, 2.6s; animation-delay: 15s, 0s; }
+@keyframes pk-rise { 0% { top: 105%; opacity: 0; } 10% { opacity: .75; } 85% { opacity: .5; } 100% { top: -6%; opacity: 0; } }
+@keyframes pk-sway { from { translate: -10px 0; rotate: -10deg; } to { translate: 10px 0; rotate: 10deg; } }
+@media (prefers-reduced-motion: reduce) { .pink-grid-polaroid .pink-anim span { display: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="pink-grid-polaroid">
+    <div class="pink-anim" aria-hidden="true"><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span></div>
+  <!-- ✏️ 1. 제목과 소제목 -->
+  <div class="album-heading">
+    <h2>제목</h2>
+    <p>소제목</p>
+  </div>
+
+  <!-- ✏️ 2. 이곳에 사진 코드를 한꺼번에 넣으세요. -->
+  <div class="photo-grid">
+    <img src="이미지링크1" alt="사진1">
+    <img src="이미지링크2" alt="사진2">
+    <img src="이미지링크3" alt="사진3">
+    <img src="이미지링크4" alt="사진4">
+    <img src="이미지링크5" alt="사진5">
+    <img src="이미지링크6" alt="사진6">
+  </div>
+
+  <!-- ✏️ 3. 날짜 또는 서명 -->
+  <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

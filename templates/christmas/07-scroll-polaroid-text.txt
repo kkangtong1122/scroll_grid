@@ -1,0 +1,212 @@
+<style>
+.christmas-scroll-polaroid-text {
+    --w: 280px;
+    position: relative; isolation: isolate; box-sizing: border-box;
+    max-width: 950px; min-width: 0; margin: 20px auto; padding: 44px 0 34px; overflow: hidden;
+    
+    border: 1px solid #c9a960; border-radius: 18px;
+    box-shadow: 0 0 24px #d3b46d40,inset 0 0 35px #d3b46d26;
+    font-family: 'Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+
+    background-color: #163c32; background-image: radial-gradient(circle at 261px 379px, #ffffff99 1.4px, transparent 2.2px), radial-gradient(circle at 476px 397px, #ffffff99 2.1px, transparent 2.9px), radial-gradient(circle at 160px 57px, #ffffff59 1.4px, transparent 2.2px), radial-gradient(circle at 389px 278px, #ffffff59 1.0px, transparent 1.8px), radial-gradient(circle at 13px 374px, #ffffff40 1.2px, transparent 2.0px), radial-gradient(circle at 186px 469px, #fff7e680 2.0px, transparent 2.8px), radial-gradient(circle at 163px 390px, #ffffff59 1.9px, transparent 2.7px), radial-gradient(circle at 455px 64px, #ffffff99 1.1px, transparent 1.9px), radial-gradient(circle at 214px 396px, #ffffff59 1.2px, transparent 2.0px), radial-gradient(circle at 170px 148px, #ffffff59 1.3px, transparent 2.1px), radial-gradient(circle at 552px 448px, #ffffff59 1.8px, transparent 2.6px), radial-gradient(circle at 186px 481px, #ffffff59 2.2px, transparent 3.0px), radial-gradient(circle at 392px 152px, #fff7e680 0.9px, transparent 1.7px), radial-gradient(circle at 169px 479px, #ffffff99 1.1px, transparent 1.9px), radial-gradient(circle at 339px 154px, #ffffff99 2.0px, transparent 2.8px), radial-gradient(circle at 346px 33px, #ffffff40 1.3px, transparent 2.1px), radial-gradient(circle at 492px 356px, #fff7e680 1.3px, transparent 2.1px), radial-gradient(circle at 483px 360px, #ffffff40 1.1px, transparent 1.9px), radial-gradient(circle at 23px 486px, #fff7e680 1.9px, transparent 2.7px), radial-gradient(circle at 18px 281px, #ffffff40 1.9px, transparent 2.7px), radial-gradient(circle at 385px 296px, #fff7e680 2.0px, transparent 2.8px), radial-gradient(circle at 47px 362px, #ffffff59 1.1px, transparent 1.9px), radial-gradient(circle at 121px 386px, #fff7e680 1.2px, transparent 2.0px), radial-gradient(circle at 352px 262px, #ffffff40 1.4px, transparent 2.2px), radial-gradient(circle at 473px 55px, #ffffff40 1.7px, transparent 2.5px), radial-gradient(circle at 302px 18px, #ffffff99 1.5px, transparent 2.3px), radial-gradient(circle at 213px 174px, #ffffff40 1.6px, transparent 2.4px), radial-gradient(circle at 151px 174px, #ffffff99 1.3px, transparent 2.1px), radial-gradient(circle at 319px 351px, #ffffff59 1.3px, transparent 2.1px), radial-gradient(circle at 80px 320px, #ffffff40 1.1px, transparent 1.9px); background-size: 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px, 560px 500px;
+}
+.christmas-scroll-polaroid-text .gallery-title {
+    margin: 0; padding: 0 22px; color: #fff1cf; font-size: 1.2rem;
+    line-height: 1.5; text-align: center; overflow-wrap: anywhere;
+    text-shadow: 0 2px 2px #00000040, 0 0 18px #e6ca8a33;
+}
+.christmas-scroll-polaroid-text .gallery-title::before { content: '❄ '; color: #e6d6af; }
+.christmas-scroll-polaroid-text .gallery-title::after { content: ' ❄'; color: #e6d6af; }
+.christmas-scroll-polaroid-text .gallery-window { margin: 0 34px; overflow: hidden; }
+.christmas-scroll-polaroid-text .scroll-container {
+    display: flex; flex-wrap: nowrap; align-items: center; gap: 28px; min-width: 0;
+    padding: 32px 20px; overflow-x: auto; overflow-y: hidden;
+    scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;
+}
+.christmas-scroll-polaroid-text .scroll-container::-webkit-scrollbar { display: none; }
+/* p 묶음과 이미지 모두 축소 방지 */
+.christmas-scroll-polaroid-text .scroll-container > p,
+.christmas-scroll-polaroid-text .scroll-container img {
+    flex: 0 0 var(--w) !important;
+    width: var(--w) !important; min-width: var(--w) !important; max-width: var(--w) !important;
+    margin: 0 !important; padding: 0 !important;
+}
+.christmas-scroll-polaroid-text .scroll-container > p { line-height: 0; }
+.christmas-scroll-polaroid-text .scroll-container img {
+    position: relative; display: block !important; height: auto !important; box-sizing: border-box;
+    padding: 10px 10px 38px !important;
+    border: 1px solid #c9a960; border-radius: 3px; background: #fffdf5; color: #6b3937;
+    box-shadow: 0 7px 12px #00000080,0 0 8px #d3b46d80,0 0 20px #d3b46d4d;
+    transform: rotate(var(--tilt,-2deg)); transition: transform .25s,box-shadow .25s;
+}
+.christmas-scroll-polaroid-text .scroll-container:focus-visible { outline: 2px solid #c9a960; outline-offset: -3px; }
+.christmas-scroll-polaroid-text .frame-sticker {
+    position: absolute; display: block; width: 30px; margin: 0; padding: 0;
+    font-size: 25px; line-height: 1.2; text-align: center; pointer-events: none;
+    user-select: none; z-index: 2; filter: drop-shadow(1px 2px 1px #00000020);
+}
+.christmas-scroll-polaroid-text .sticker-top-left { top: 10px; left: 16px; transform: rotate(-16deg); }
+.christmas-scroll-polaroid-text .sticker-top-right { top: 10px; right: 16px; transform: rotate(16deg); }
+.christmas-scroll-polaroid-text .sticker-side-left { top: 57%; left: 4px; width: 24px; font-size: 20px; transform: rotate(-12deg); }
+.christmas-scroll-polaroid-text .sticker-side-right { top: 57%; right: 4px; width: 24px; font-size: 20px; transform: rotate(12deg); }
+.christmas-scroll-polaroid-text .sticker-bottom-left { bottom: 6px; left: 15px; transform: rotate(-12deg); }
+.christmas-scroll-polaroid-text .sticker-bottom-right { bottom: 6px; right: 15px; transform: rotate(12deg); }
+.christmas-scroll-polaroid-text .emoji-garland {
+    margin: 9px 34px 0; padding: 0; font-size: 16px; line-height: 1.5; text-align: center;
+    letter-spacing: .22em; pointer-events: none; user-select: none;
+}
+@media (hover: hover) {
+    .christmas-scroll-polaroid-text .scroll-container img:hover { transform: rotate(0deg) translateY(-3px); box-shadow: 0 9px 14px #00000080,0 0 10px #d3b46db3,0 0 24px #d3b46d66; z-index: 1; }
+}
+@media (max-width: 600px) { .christmas-scroll-polaroid-text { --w: 240px; } }
+@media (prefers-reduced-motion: reduce) {
+    .christmas-scroll-polaroid-text .scroll-container { scroll-behavior: auto; }
+    .christmas-scroll-polaroid-text .scroll-container img { transition: none; }
+    .christmas-scroll-polaroid-text .scroll-container img:hover { transform: rotate(var(--tilt,-2deg)); }
+}
+.christmas-scroll-polaroid-text .scroll-container > :nth-child(4n+1) { --tilt: -2deg; }
+.christmas-scroll-polaroid-text .scroll-container > :nth-child(4n+2) { --tilt: 1.5deg; }
+.christmas-scroll-polaroid-text .scroll-container > :nth-child(4n+3) { --tilt: -1deg; }
+.christmas-scroll-polaroid-text .scroll-container > :nth-child(4n+4) { --tilt: 2deg; }
+.christmas-scroll-polaroid-text .gallery-subtitle { margin: 6px 0 0; padding: 0 22px; color: #e6d6af; font-size: .88rem; line-height: 1.6; text-align: center; overflow-wrap: anywhere; }
+.christmas-scroll-polaroid-text .album-footer { margin: 24px 34px 0; padding-top: 14px; border-top: 1px dashed #c9a960; color: #e6d6af; text-align: right; font-size: .85rem; line-height: 1.6; overflow-wrap: anywhere; }
+/* 배경 애니메이션 시작 */
+.christmas-scroll-polaroid-text .xmas-snow { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.christmas-scroll-polaroid-text .xmas-snow::before, .christmas-scroll-polaroid-text .xmas-snow::after { content: ""; position: absolute; inset: 0 -24px; }
+.christmas-scroll-polaroid-text .xmas-snow::before { background-image: radial-gradient(circle at 195px 170px, #ffffffcc 1.0px, transparent 1.8px), radial-gradient(circle at 197px 295px, #ffffff99 1.5px, transparent 2.3px), radial-gradient(circle at 283px 141px, #ffffff73 1.1px, transparent 1.9px), radial-gradient(circle at 390px 295px, #ffffffcc 0.8px, transparent 1.6px), radial-gradient(circle at 338px 9px, #ffffffcc 1.2px, transparent 2.0px), radial-gradient(circle at 76px 370px, #ffffff99 1.1px, transparent 1.9px), radial-gradient(circle at 335px 353px, #ffffffcc 1.3px, transparent 2.1px), radial-gradient(circle at 61px 401px, #ffffff99 1.3px, transparent 2.1px), radial-gradient(circle at 144px 376px, #ffffff73 1.0px, transparent 1.8px), radial-gradient(circle at 184px 374px, #ffffff73 1.2px, transparent 2.0px), radial-gradient(circle at 343px 9px, #ffffffcc 0.9px, transparent 1.7px), radial-gradient(circle at 352px 91px, #ffffff99 0.8px, transparent 1.6px), radial-gradient(circle at 115px 317px, #ffffff73 0.8px, transparent 1.6px), radial-gradient(circle at 93px 222px, #ffffffcc 1.5px, transparent 2.3px), radial-gradient(circle at 154px 204px, #ffffff73 0.9px, transparent 1.7px), radial-gradient(circle at 47px 208px, #ffffff73 0.8px, transparent 1.6px), radial-gradient(circle at 252px 202px, #ffffffcc 1.0px, transparent 1.8px), radial-gradient(circle at 69px 39px, #ffffff73 1.2px, transparent 2.0px), radial-gradient(circle at 205px 217px, #ffffff99 1.2px, transparent 2.0px), radial-gradient(circle at 276px 14px, #ffffff73 1.5px, transparent 2.3px), radial-gradient(circle at 237px 164px, #ffffffcc 0.9px, transparent 1.7px), radial-gradient(circle at 366px 20px, #ffffff73 1.4px, transparent 2.2px); background-size: 420px 420px;
+    animation: xmas-fall-small 18s linear infinite; }
+.christmas-scroll-polaroid-text .xmas-snow::after { background-image: radial-gradient(circle at 21px 188px, #ffffffe6 2.5px, transparent 3.3px), radial-gradient(circle at 115px 263px, #ffffffb3 2.2px, transparent 3.0px), radial-gradient(circle at 148px 223px, #ffffffb3 2.6px, transparent 3.4px), radial-gradient(circle at 10px 84px, #ffffffb3 2.4px, transparent 3.2px), radial-gradient(circle at 193px 203px, #ffffffb3 3.0px, transparent 3.8px), radial-gradient(circle at 279px 130px, #ffffffe6 2.8px, transparent 3.6px), radial-gradient(circle at 289px 72px, #ffffffe6 2.0px, transparent 2.8px), radial-gradient(circle at 300px 218px, #ffffffe6 2.4px, transparent 3.2px), radial-gradient(circle at 301px 220px, #ffffffe6 2.2px, transparent 3.0px), radial-gradient(circle at 121px 142px, #ffffffe6 2.3px, transparent 3.1px), radial-gradient(circle at 212px 228px, #ffffffb3 1.8px, transparent 2.6px), radial-gradient(circle at 228px 10px, #ffffffe6 2.9px, transparent 3.7px); background-size: 360px 360px;
+    animation: xmas-fall-big 11s linear infinite, xmas-sway 3.6s ease-in-out infinite alternate; }
+@keyframes xmas-fall-small { from { background-position: 0 0; } to { background-position: 0 420px; } }
+@keyframes xmas-fall-big { from { background-position: 0 0; } to { background-position: 0 360px; } }
+@keyframes xmas-sway { from { transform: translateX(-12px); } to { transform: translateX(12px); } }
+@media (prefers-reduced-motion: reduce) { .christmas-scroll-polaroid-text .xmas-snow::before, .christmas-scroll-polaroid-text .xmas-snow::after { animation: none; } }
+/* 배경 애니메이션 끝 */
+
+/* ===== 사진+글씨 스크롤: 사진과 같은 순서의 글씨를 폴라로이드 아래 흰 여백에 겹칩니다. 최대 50장. ===== */
+.christmas-scroll-polaroid-text .scroll-container.with-captions {
+    --h: 380px;
+    display: grid !important; grid-auto-flow: column; grid-auto-columns: var(--w);
+    grid-template-rows: auto; align-items: stretch; justify-content: start;
+}
+.christmas-scroll-polaroid-text .scroll-container.with-captions > .captions, .christmas-scroll-polaroid-text .scroll-container.with-captions > .photos-in, .christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > p { display: contents !important; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > p > br { display: none; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in img {
+    grid-row: 1; grid-column: var(--col);
+    width: var(--w) !important; min-width: 0 !important; max-width: var(--w) !important;
+    height: var(--h) !important; padding-bottom: 78px !important;
+    object-fit: contain; flex: none !important; margin: 0 !important;
+}
+.christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > p {
+    position: relative; z-index: 2; grid-row: 1; grid-column: var(--col); align-self: end;
+    display: flex; align-items: center; justify-content: center; box-sizing: border-box;
+    height: 66px; margin: 0 16px 8px !important; padding: 0 !important;
+    color: #6b3937; font-size: .92rem; line-height: 1.45; text-align: center;
+    word-break: keep-all; overflow-wrap: anywhere; overflow: auto; transform: rotate(var(--tilt, 0deg));
+}
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(1), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(1) { --col: 1; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(2), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(2) { --col: 2; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(3), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(3) { --col: 3; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(4), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(4) { --col: 4; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(5), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(5) { --col: 5; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(6), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(6) { --col: 6; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(7), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(7) { --col: 7; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(8), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(8) { --col: 8; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(9), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(9) { --col: 9; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(10), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(10) { --col: 10; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(11), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(11) { --col: 11; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(12), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(12) { --col: 12; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(13), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(13) { --col: 13; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(14), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(14) { --col: 14; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(15), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(15) { --col: 15; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(16), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(16) { --col: 16; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(17), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(17) { --col: 17; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(18), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(18) { --col: 18; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(19), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(19) { --col: 19; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(20), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(20) { --col: 20; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(21), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(21) { --col: 21; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(22), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(22) { --col: 22; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(23), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(23) { --col: 23; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(24), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(24) { --col: 24; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(25), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(25) { --col: 25; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(26), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(26) { --col: 26; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(27), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(27) { --col: 27; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(28), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(28) { --col: 28; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(29), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(29) { --col: 29; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(30), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(30) { --col: 30; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(31), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(31) { --col: 31; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(32), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(32) { --col: 32; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(33), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(33) { --col: 33; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(34), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(34) { --col: 34; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(35), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(35) { --col: 35; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(36), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(36) { --col: 36; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(37), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(37) { --col: 37; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(38), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(38) { --col: 38; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(39), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(39) { --col: 39; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(40), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(40) { --col: 40; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(41), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(41) { --col: 41; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(42), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(42) { --col: 42; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(43), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(43) { --col: 43; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(44), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(44) { --col: 44; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(45), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(45) { --col: 45; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(46), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(46) { --col: 46; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(47), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(47) { --col: 47; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(48), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(48) { --col: 48; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(49), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(49) { --col: 49; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(50), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(50) { --col: 50; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(4n+1), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(4n+1) { --tilt: -2deg; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(4n+2), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(4n+2) { --tilt: 1.5deg; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(4n+3), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(4n+3) { --tilt: -1deg; }
+.christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(4n+4), .christmas-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(4n+4) { --tilt: 2deg; }
+@media (hover: hover) { .christmas-scroll-polaroid-text .scroll-container.with-captions .photos-in img:hover { transform: rotate(var(--tilt, 0deg)); } }
+@media (max-width: 600px) { .christmas-scroll-polaroid-text .scroll-container.with-captions { --h: 330px; } }
+</style>
+
+<div class="christmas-scroll-polaroid-text">
+    <div class="xmas-snow" aria-hidden="true">&#8203;</div>
+    
+    <span class="frame-sticker sticker-top-left" aria-hidden="true">🎄</span>
+    <span class="frame-sticker sticker-top-right" aria-hidden="true">🔔</span>
+    <span class="frame-sticker sticker-side-left" aria-hidden="true">❄️</span>
+    <span class="frame-sticker sticker-side-right" aria-hidden="true">🎁</span>
+    <span class="frame-sticker sticker-bottom-left" aria-hidden="true">🧦</span>
+    <span class="frame-sticker sticker-bottom-right" aria-hidden="true">⛄</span>
+
+    
+    <h2 class="gallery-title">제목</h2>
+    <p class="gallery-subtitle">소제목</p>
+    <p class="emoji-garland" aria-hidden="true">❤️ 🎀 💚</p>
+
+    <div class="gallery-window">
+        <div class="scroll-container with-captions" tabindex="0" role="region" aria-label="좌우로 넘기는 사진 모음">
+            <!-- 글씨를 사진과 같은 순서로 넣으세요. 글씨를 비우려면 <p></p>를 남겨 순서를 맞추세요. -->
+            <div class="captions">
+                <p>1번째 사진에 하고 싶은 말</p>
+                <p>2번째 사진에 하고 싶은 말</p>
+                <p>3번째 사진에 하고 싶은 말</p>
+                <p>4번째 사진에 하고 싶은 말</p>
+                <p>5번째 사진에 하고 싶은 말</p>
+                <p>6번째 사진에 하고 싶은 말</p>
+                <p>7번째 사진에 하고 싶은 말</p>
+                <p>8번째 사진에 하고 싶은 말</p>
+                <p>9번째 사진에 하고 싶은 말</p>
+                <p>10번째 사진에 하고 싶은 말</p>
+            </div>
+            <!-- 사진을 같은 순서로 넣으세요. p 하나에는 사진 한 장만 넣습니다. -->
+            <div class="photos-in">
+                <img src="이미지링크1" alt="사진1">
+                <img src="이미지링크2" alt="사진2">
+                <img src="이미지링크3" alt="사진3">
+                <img src="이미지링크4" alt="사진4">
+                <img src="이미지링크5" alt="사진5">
+                <img src="이미지링크6" alt="사진6">
+                <img src="이미지링크7" alt="사진7">
+                <img src="이미지링크8" alt="사진8">
+                <img src="이미지링크9" alt="사진9">
+                <img src="이미지링크10" alt="사진10">
+            </div>
+        </div>
+    </div>
+
+    <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

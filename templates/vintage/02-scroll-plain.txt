@@ -1,0 +1,110 @@
+<style>
+.vintage-scroll-plain {
+    --w: 280px;
+    position: relative; isolation: isolate; box-sizing: border-box;
+    width: 100%; max-width: 950px; min-width: 0; margin: 20px auto; padding: 44px 0 34px; overflow: hidden;
+    
+    
+    
+    border: 1px solid #cdb895; border-radius: 18px;
+    box-shadow: 0 0 24px #b3977140, inset 0 0 35px #b3977126;
+    font-family: 'Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+
+    background-color: #f4ebd9; background-image: radial-gradient(#75552d1f 0.6px, transparent 0.8px), linear-gradient(115deg, #ffffff59, transparent 55%, #a7804812); background-size: 7px 7px, 100% 100%;
+}
+.vintage-scroll-plain .gallery-title {
+    margin: 0; padding: 0 22px; color: #674733; font-size: 1.2rem;
+    line-height: 1.5; text-align: center; overflow-wrap: anywhere;
+    text-shadow: none;
+}
+.vintage-scroll-plain .gallery-title::before { content: '❦ '; color: #93785e; }
+.vintage-scroll-plain .gallery-title::after { content: ' ❦'; color: #93785e; }
+.vintage-scroll-plain .gallery-window { margin: 0 34px; overflow: hidden; }
+.vintage-scroll-plain .scroll-container {
+    display: flex; flex-wrap: nowrap; align-items: center; gap: 15px; min-width: 0;
+    padding: 14px 0 15px; overflow-x: auto; overflow-y: hidden;
+    scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;
+}
+.vintage-scroll-plain .scroll-container::-webkit-scrollbar { display: none; }
+/* p 묶음과 이미지 모두 축소 방지 */
+.vintage-scroll-plain .scroll-container > p,
+.vintage-scroll-plain .scroll-container img {
+    flex: 0 0 var(--w) !important;
+    width: var(--w) !important; min-width: var(--w) !important; max-width: var(--w) !important;
+    margin: 0 !important; padding: 0 !important;
+}
+.vintage-scroll-plain .scroll-container > p { line-height: 0; }
+.vintage-scroll-plain .scroll-container img {
+    position: relative; display: block !important; height: auto !important; box-sizing: border-box;
+    border: 2px solid #fffdf5; border-radius: 8px; background: #eee2cf; color: #705640;
+    box-shadow: 0 4px 8px #0000004d; transition: transform .25s,box-shadow .25s;
+}
+.vintage-scroll-plain .scroll-container:focus-visible { outline: 2px solid #cdb895; outline-offset: -3px; }
+.vintage-scroll-plain .frame-sticker {
+    position: absolute; display: block; width: 30px; margin: 0; padding: 0;
+    font-size: 25px; line-height: 1.2; text-align: center; pointer-events: none;
+    user-select: none; z-index: 2; filter: drop-shadow(1px 2px 1px #00000020);
+}
+.vintage-scroll-plain .sticker-top-left { top: 10px; left: 16px; transform: rotate(-16deg); }
+.vintage-scroll-plain .sticker-top-right { top: 10px; right: 16px; transform: rotate(16deg); }
+.vintage-scroll-plain .sticker-side-left { top: 57%; left: 4px; width: 24px; font-size: 20px; transform: rotate(-12deg); }
+.vintage-scroll-plain .sticker-side-right { top: 57%; right: 4px; width: 24px; font-size: 20px; transform: rotate(12deg); }
+.vintage-scroll-plain .sticker-bottom-left { bottom: 6px; left: 15px; transform: rotate(-12deg); }
+.vintage-scroll-plain .sticker-bottom-right { bottom: 6px; right: 15px; transform: rotate(12deg); }
+.vintage-scroll-plain .emoji-garland {
+    margin: 9px 34px 0; padding: 0; font-size: 16px; line-height: 1.5; text-align: center;
+    letter-spacing: .22em; pointer-events: none; user-select: none;
+}
+@media (hover: hover) {
+    .vintage-scroll-plain .scroll-container img:hover { transform: scale(1.04); box-shadow: 0 7px 16px #00000040; z-index: 1; }
+}
+@media (max-width: 600px) { .vintage-scroll-plain { --w: 240px; } }
+@media (prefers-reduced-motion: reduce) {
+    .vintage-scroll-plain .scroll-container { scroll-behavior: auto; }
+    .vintage-scroll-plain .scroll-container img { transition: none; }
+    .vintage-scroll-plain .scroll-container img:hover { transform: none; }
+}
+.vintage-scroll-plain .gallery-subtitle { margin: 6px 0 0; padding: 0 22px; color: #93785e; font-size: .88rem; line-height: 1.6; text-align: center; overflow-wrap: anywhere; }
+.vintage-scroll-plain .album-footer { margin: 24px 34px 0; padding-top: 14px; border-top: 1px dashed #cdb895; color: #93785e; text-align: right; font-size: .85rem; line-height: 1.6; overflow-wrap: anywhere; }
+/* 배경 애니메이션 시작 */
+.vintage-scroll-plain .vintage-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.vintage-scroll-plain .vintage-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.vintage-scroll-plain .vintage-anim::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 254px 235px, #a0806059 0.8px, transparent 1.6px), radial-gradient(circle at 17px 25px, #8d6e5070 1.6px, transparent 2.4px), radial-gradient(circle at 96px 89px, #8d6e5070 1.0px, transparent 1.8px), radial-gradient(circle at 210px 78px, #6d4c3c4d 1.0px, transparent 1.8px), radial-gradient(circle at 103px 243px, #6d4c3c4d 1.4px, transparent 2.2px), radial-gradient(circle at 117px 228px, #8d6e5070 1.6px, transparent 2.4px), radial-gradient(circle at 15px 10px, #a0806059 1.6px, transparent 2.4px), radial-gradient(circle at 178px 197px, #8d6e5070 1.2px, transparent 2.0px), radial-gradient(circle at 281px 162px, #6d4c3c4d 1.1px, transparent 1.9px), radial-gradient(circle at 164px 225px, #6d4c3c4d 0.9px, transparent 1.7px), radial-gradient(circle at 208px 321px, #8d6e5070 1.2px, transparent 2.0px), radial-gradient(circle at 291px 65px, #a0806059 0.7px, transparent 1.5px), radial-gradient(circle at 96px 336px, #8d6e5070 1.1px, transparent 1.9px), radial-gradient(circle at 336px 62px, #6d4c3c4d 1.1px, transparent 1.9px), radial-gradient(circle at 219px 75px, #a0806059 1.6px, transparent 2.4px), radial-gradient(circle at 131px 50px, #8d6e5070 1.0px, transparent 1.8px), radial-gradient(circle at 54px 315px, #6d4c3c4d 1.1px, transparent 1.9px), radial-gradient(circle at 35px 93px, #a0806059 0.9px, transparent 1.7px), radial-gradient(circle at 138px 163px, #a0806059 1.3px, transparent 2.1px), radial-gradient(circle at 254px 82px, #a0806059 1.2px, transparent 2.0px), radial-gradient(circle at 324px 297px, #6d4c3c4d 0.9px, transparent 1.7px), radial-gradient(circle at 328px 152px, #8d6e5070 1.2px, transparent 2.0px), radial-gradient(circle at 258px 222px, #a0806059 1.1px, transparent 1.9px), radial-gradient(circle at 376px 53px, #a0806059 1.5px, transparent 2.3px), radial-gradient(circle at 57px 302px, #8d6e5070 1.3px, transparent 2.1px), radial-gradient(circle at 30px 245px, #6d4c3c4d 0.9px, transparent 1.7px); background-size: 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px;
+    animation: vt-drift 60s linear infinite; }
+.vintage-scroll-plain .vintage-anim::after { content: ""; position: absolute; inset: 0; background: #fff4dc; opacity: 0; animation: vt-flicker 7s steps(1, end) infinite; }
+@keyframes vt-drift { from { background-position: 0 0; } to { background-position: 380px -340px; } }
+@keyframes vt-flicker { 0% { opacity: 0; } 4% { opacity: .07; } 6% { opacity: 0; } 48% { opacity: .05; } 50% { opacity: 0; } 77% { opacity: .06; } 78% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .vintage-scroll-plain .vintage-anim::before, .vintage-scroll-plain .vintage-anim::after { animation: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="vintage-scroll-plain">
+    <div class="vintage-anim" aria-hidden="true">&#8203;</div>
+    <!-- 🎀 테두리 장식: 이모지만 바꾸면 다른 스티커로 사용할 수 있어요. -->
+    <span class="frame-sticker sticker-top-left" aria-hidden="true">🧸</span>
+    <span class="frame-sticker sticker-top-right" aria-hidden="true">✉️</span>
+    <span class="frame-sticker sticker-side-left" aria-hidden="true">🍂</span>
+    <span class="frame-sticker sticker-side-right" aria-hidden="true">🗝️</span>
+    <span class="frame-sticker sticker-bottom-left" aria-hidden="true">📜</span>
+    <span class="frame-sticker sticker-bottom-right" aria-hidden="true">☕</span>
+
+    <!-- ✏️ 제목: 필요 없으면 이 h2 한 줄을 지우세요. -->
+    <h2 class="gallery-title">제목</h2>
+    <p class="gallery-subtitle">소제목</p>
+    <p class="emoji-garland" aria-hidden="true">🤎 ✒️ 🤎</p>
+
+    <div class="gallery-window">
+        <div class="scroll-container" tabindex="0" role="region" aria-label="좌우로 넘기는 사진 모음">
+
+            <!-- ✏️ 사진은 이곳에 한꺼번에 넣으세요. -->
+            <img src="이미지링크1" alt="사진1">
+            <img src="이미지링크2" alt="사진2">
+            <img src="이미지링크3" alt="사진3">
+            <img src="이미지링크4" alt="사진4">
+            <img src="이미지링크5" alt="사진5">
+
+        </div>
+    </div>
+
+    <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

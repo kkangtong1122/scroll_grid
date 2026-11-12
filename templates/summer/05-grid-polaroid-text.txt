@@ -1,0 +1,181 @@
+<style>
+/* 여름바다 — 사진은 img만, 글씨는 p만 순서대로 넣으세요. */
+.summer-grid-polaroid-text {
+  width: 100%; max-width: 1100px; margin: 30px auto; padding: 55px 35px 35px;
+  box-sizing: border-box; position: relative; isolation: isolate;
+   
+   border: 2px solid #7fbfce; border-radius: 16px;
+  box-shadow: 0 0 24px #2eb8c640, inset 0 0 35px #2eb8c626; font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+
+    background-color: #e5f6f8; background-image: radial-gradient(circle at 20px 25px, #ffffffa6 2px, transparent 3px), repeating-linear-gradient(0deg, transparent 0 29px, #5ba7b71f 29px 30px), linear-gradient(180deg, #dbf3f8, #eefafb 65%, #f6e8c9); background-size: 75px 85px, 100% 30px, 100% 100%;
+}
+.summer-grid-polaroid-text *, .summer-grid-polaroid-text *::before, .summer-grid-polaroid-text *::after { box-sizing: border-box; }
+.summer-grid-polaroid-text::before, .summer-grid-polaroid-text::after { position: absolute; top: 12px; font-size: 2.5rem; line-height: 1; pointer-events: none; }
+.summer-grid-polaroid-text::before { content: '☀️'; left: 10px; transform: rotate(-18deg); }
+.summer-grid-polaroid-text::after { content: '🏖️'; right: 10px; transform: rotate(18deg); }
+.summer-grid-polaroid-text .album-heading { position: relative; margin-bottom: 45px; text-align: center; color: #216c83; }
+.summer-grid-polaroid-text .album-heading::before { content: 'SALT AIR & SUNNY DAYS'; display: block; margin-bottom: 14px; color: #497f8c; font: 0.65rem Georgia, serif; letter-spacing: 0.16em; }
+.summer-grid-polaroid-text .album-heading::after { content: '≈ 🐚 ≈'; display: block; margin-top: 18px; letter-spacing: 0.25em; }
+.summer-grid-polaroid-text .album-heading h2 { display: inline-block; max-width: 100%; margin: 0; padding-bottom: 10px; color: #216c83; border-bottom: 2px dashed #7fbfce; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.4; overflow-wrap: anywhere; text-shadow: 0 2px 0 #ffffffd9; }
+.summer-grid-polaroid-text .album-heading p { margin: 15px 0 0; color: #497f8c; font-size: 0.9rem; line-height: 1.6; }
+
+/* 글씨와 사진을 같은 칸에 배치 */
+.summer-grid-polaroid-text .batch-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 460px; gap: 40px 32px; isolation: isolate; }
+.summer-grid-polaroid-text .captions, .summer-grid-polaroid-text .photos { display: contents; }
+.summer-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row2); grid-column: var(--col, 1); min-width: 0; position: relative; transform: rotate(var(--tilt, 0deg)); }
+
+/* img 하나가 폴라로이드 한 장입니다. 아래 흰 여백은 글씨가 없어도 유지됩니다. */
+.summer-grid-polaroid-text .photos img {
+  display: block !important; box-sizing: border-box !important;
+  width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+  height: 460px !important; margin: 0 !important;
+  padding: 12px 12px 84px !important; object-fit: contain !important;
+  background-color: #fffdf6; border: 1px solid #7fbfce; border-radius: 3px;
+  box-shadow: 0 6px 12px #00000066,0 0 8px #2eb8c666,0 0 18px #2eb8c63d; color: #49737b; font-size: 0.8rem;
+  transform-origin: 50% 50%; z-index: 0;
+}
+
+/* 글씨의 회전 중심을 사진 중심에 맞춰 함께 기울어지게 합니다.
+   카드 높이 460px / 글씨 시작 236px / 중심 160px → -76px */
+.summer-grid-polaroid-text .captions > p {
+  align-self: end; width: auto; height: 66px; margin: 0 18px 18px; padding: 0;
+  color: #49737b; font-size: 0.95rem; line-height: 1.5; text-align: center;
+  word-break: keep-all; overflow-wrap: anywhere; overflow: auto;
+  scrollbar-width: thin; scrollbar-color: #e88432 #e1f0f2;
+  transform-origin: 50% -146px; z-index: 1;
+}
+
+/* 기울기와 열 위치 자동 반복 */
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(5n + 1) { --tilt: -2deg; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(5n + 2) { --tilt: 1.5deg; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(5n + 3) { --tilt: -1deg; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(5n + 4) { --tilt: 2deg; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(5n + 5) { --tilt: -0.5deg; }
+
+
+
+
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(odd) { --col: 1; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(even) { --col: 2; }
+
+/* 최대 50장의 사진·글씨 위치 */
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(1) { --row3: 1; --row2: 1; --row1: 1; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(2) { --row3: 1; --row2: 1; --row1: 2; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(3) { --row3: 1; --row2: 2; --row1: 3; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(4) { --row3: 2; --row2: 2; --row1: 4; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(5) { --row3: 2; --row2: 3; --row1: 5; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(6) { --row3: 2; --row2: 3; --row1: 6; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(7) { --row3: 3; --row2: 4; --row1: 7; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(8) { --row3: 3; --row2: 4; --row1: 8; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(9) { --row3: 3; --row2: 5; --row1: 9; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(10) { --row3: 4; --row2: 5; --row1: 10; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(11) { --row3: 4; --row2: 6; --row1: 11; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(12) { --row3: 4; --row2: 6; --row1: 12; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(13) { --row3: 5; --row2: 7; --row1: 13; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(14) { --row3: 5; --row2: 7; --row1: 14; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(15) { --row3: 5; --row2: 8; --row1: 15; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(16) { --row3: 6; --row2: 8; --row1: 16; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(17) { --row3: 6; --row2: 9; --row1: 17; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(18) { --row3: 6; --row2: 9; --row1: 18; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(19) { --row3: 7; --row2: 10; --row1: 19; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(20) { --row3: 7; --row2: 10; --row1: 20; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(21) { --row3: 7; --row2: 11; --row1: 21; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(22) { --row3: 8; --row2: 11; --row1: 22; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(23) { --row3: 8; --row2: 12; --row1: 23; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(24) { --row3: 8; --row2: 12; --row1: 24; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(25) { --row3: 9; --row2: 13; --row1: 25; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(26) { --row3: 9; --row2: 13; --row1: 26; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(27) { --row3: 9; --row2: 14; --row1: 27; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(28) { --row3: 10; --row2: 14; --row1: 28; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(29) { --row3: 10; --row2: 15; --row1: 29; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(30) { --row3: 10; --row2: 15; --row1: 30; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(31) { --row3: 11; --row2: 16; --row1: 31; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(32) { --row3: 11; --row2: 16; --row1: 32; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(33) { --row3: 11; --row2: 17; --row1: 33; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(34) { --row3: 12; --row2: 17; --row1: 34; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(35) { --row3: 12; --row2: 18; --row1: 35; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(36) { --row3: 12; --row2: 18; --row1: 36; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(37) { --row3: 13; --row2: 19; --row1: 37; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(38) { --row3: 13; --row2: 19; --row1: 38; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(39) { --row3: 13; --row2: 20; --row1: 39; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(40) { --row3: 14; --row2: 20; --row1: 40; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(41) { --row3: 14; --row2: 21; --row1: 41; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(42) { --row3: 14; --row2: 21; --row1: 42; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(43) { --row3: 15; --row2: 22; --row1: 43; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(44) { --row3: 15; --row2: 22; --row1: 44; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(45) { --row3: 15; --row2: 23; --row1: 45; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(46) { --row3: 16; --row2: 23; --row1: 46; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(47) { --row3: 16; --row2: 24; --row1: 47; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(48) { --row3: 16; --row2: 24; --row1: 48; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(49) { --row3: 17; --row2: 25; --row1: 49; }
+.summer-grid-polaroid-text .batch-grid > div > :nth-child(50) { --row3: 17; --row2: 25; --row1: 50; }
+
+.summer-grid-polaroid-text .album-footer { margin-top: 45px; padding-top: 18px; border-top: 1px dashed #7fbfce; color: #497f8c; text-align: right; font-size: 0.85rem; line-height: 1.6; }
+@media (max-width: 900px) {
+  .summer-grid-polaroid-text .batch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .summer-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row2); }
+  .summer-grid-polaroid-text .batch-grid > div > :nth-child(odd) { --col: 1; }
+  .summer-grid-polaroid-text .batch-grid > div > :nth-child(even) { --col: 2; }
+}
+@media (max-width: 600px) {
+  .summer-grid-polaroid-text { padding: 55px 24px 30px; }
+  .summer-grid-polaroid-text .batch-grid { grid-template-columns: minmax(0, 1fr); }
+  .summer-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row1); grid-column: 1; }
+}
+
+/* 업로드 편집기가 추가한 p도 사진 한 칸으로 처리합니다. */
+.summer-grid-polaroid-text .photos > p {
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    height: 460px !important; margin: 0 !important; padding: 0 !important;
+    line-height: 0; overflow: visible;
+}
+.summer-grid-polaroid-text .photos > p { transform-origin: 50% 50%; z-index: 0; }
+/* 배경 애니메이션 시작 */
+.summer-grid-polaroid-text .summer-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.summer-grid-polaroid-text .summer-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.summer-grid-polaroid-text .summer-anim::before, .summer-grid-polaroid-text .summer-anim::after { content: ""; position: absolute; inset: 0 -20px; }
+.summer-grid-polaroid-text .summer-anim::before { background-image: radial-gradient(circle at 253px 93px, transparent 2.9px, #5fb8c8b3 3.7px, transparent 4.7px), radial-gradient(circle at 414px 164px, transparent 2.4px, #5fb8c8b3 3.2px, transparent 4.2px), radial-gradient(circle at 411px 354px, transparent 1.9px, #5fb8c8b3 2.7px, transparent 3.7px), radial-gradient(circle at 183px 183px, transparent 1.9px, #5fb8c8b3 2.7px, transparent 3.7px), radial-gradient(circle at 236px 168px, transparent 3.7px, #5fb8c8b3 4.5px, transparent 5.5px), radial-gradient(circle at 171px 323px, transparent 1.8px, #5fb8c8b3 2.6px, transparent 3.6px), radial-gradient(circle at 257px 352px, transparent 2.0px, #5fb8c8b3 2.8px, transparent 3.8px), radial-gradient(circle at 89px 172px, transparent 1.9px, #5fb8c8b3 2.7px, transparent 3.7px), radial-gradient(circle at 412px 73px, transparent 2.1px, #5fb8c8b3 2.9px, transparent 3.9px), radial-gradient(circle at 206px 151px, transparent 3.6px, #5fb8c8b3 4.4px, transparent 5.4px), radial-gradient(circle at 377px 432px, transparent 2.5px, #5fb8c8b3 3.3px, transparent 4.3px), radial-gradient(circle at 163px 316px, transparent 2.5px, #5fb8c8b3 3.3px, transparent 4.3px), radial-gradient(circle at 419px 321px, transparent 3.1px, #5fb8c8b3 3.9px, transparent 4.9px), radial-gradient(circle at 400px 365px, transparent 3.0px, #5fb8c8b3 3.8px, transparent 4.8px), radial-gradient(circle at 214px 208px, transparent 2.3px, #5fb8c8b3 3.1px, transparent 4.1px), radial-gradient(circle at 92px 29px, transparent 2.9px, #5fb8c8b3 3.7px, transparent 4.7px); background-size: 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px, 420px 440px; animation: sm-rise-s 20s linear infinite; opacity: .8; }
+.summer-grid-polaroid-text .summer-anim::after { background-image: radial-gradient(circle at 143px 62px, transparent 6.8px, #4aaabd99 7.6px, transparent 8.6px), radial-gradient(circle at 288px 93px, transparent 6.6px, #4aaabd99 7.4px, transparent 8.4px), radial-gradient(circle at 300px 37px, transparent 6.7px, #4aaabd99 7.5px, transparent 8.5px), radial-gradient(circle at 265px 256px, transparent 5.6px, #4aaabd99 6.4px, transparent 7.4px), radial-gradient(circle at 56px 11px, transparent 5.8px, #4aaabd99 6.6px, transparent 7.6px), radial-gradient(circle at 13px 212px, transparent 6.2px, #4aaabd99 7.0px, transparent 8.0px), radial-gradient(circle at 216px 255px, transparent 7.0px, #4aaabd99 7.8px, transparent 8.8px), radial-gradient(circle at 221px 92px, transparent 8.2px, #4aaabd99 9.0px, transparent 10.0px); background-size: 380px 400px, 380px 400px, 380px 400px, 380px 400px, 380px 400px, 380px 400px, 380px 400px, 380px 400px; animation: sm-rise-b 13s linear infinite, sm-sway 3.2s ease-in-out infinite alternate; opacity: .7; }
+@keyframes sm-rise-s { from { background-position: 0 0; } to { background-position: 0 -440px; } }
+@keyframes sm-rise-b { from { background-position: 0 0; } to { background-position: 0 -400px; } }
+@keyframes sm-sway { from { transform: translateX(-8px); } to { transform: translateX(8px); } }
+@media (prefers-reduced-motion: reduce) { .summer-grid-polaroid-text .summer-anim::before, .summer-grid-polaroid-text .summer-anim::after { animation: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="summer-grid-polaroid-text">
+    <div class="summer-anim" aria-hidden="true">&#8203;</div>
+  <!-- ✏️ 1. 제목과 소제목 -->
+  <div class="album-heading">
+    <h2>제목</h2>
+    <p>소제목</p>
+  </div>
+
+  <div class="batch-grid">
+    <!-- ✏️ 2. 글씨는 여기에 한꺼번에 입력하세요.
+         사진만 쓰려면 captions 묶음을 통째로 지우세요.
+         특정 사진만 글씨를 비우려면 <p></p>를 남겨 순서를 맞추세요. -->
+    <div class="captions">
+      <p>첫 번째 사진에 하고 싶은 말</p>
+      <p>두 번째 사진에 하고 싶은 말</p>
+      <p>세 번째 사진에 하고 싶은 말</p>
+      <p>네 번째 사진에 하고 싶은 말</p>
+      <p>다섯 번째 사진에 하고 싶은 말</p>
+      <p>여섯 번째 사진에 하고 싶은 말</p>
+    </div>
+
+    <!-- ✏️ 3. 사진은 여기에 한꺼번에 입력하세요. 최대 50장.
+         img 한 줄이 폴라로이드 한 장입니다. -->
+    <div class="photos">
+      <img src="이미지링크1" alt="사진1">
+      <img src="이미지링크2" alt="사진2">
+      <img src="이미지링크3" alt="사진3">
+      <img src="이미지링크4" alt="사진4">
+      <img src="이미지링크5" alt="사진5">
+      <img src="이미지링크6" alt="사진6">
+    </div>
+  </div>
+
+  <!-- ✏️ 4. 날짜 또는 서명 -->
+  <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

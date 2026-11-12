@@ -1,0 +1,116 @@
+<style>
+.pink-scroll-plain {
+    --w: 280px;
+    position: relative; isolation: isolate; box-sizing: border-box;
+    width: 100%; max-width: 950px; min-width: 0; margin: 20px auto; padding: 44px 0 34px; overflow: hidden;
+    
+    
+    
+    border: 1px solid #e9b7c9; border-radius: 18px;
+    box-shadow: 0 0 24px #e99bb840, inset 0 0 35px #e99bb826;
+    font-family: 'Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+
+    background-color: #fff5f8; background-image: linear-gradient(90deg, #e9a5be1f 50%, transparent 50%), linear-gradient(#e9a5be1f 50%, transparent 50%); background-size: 32px 32px;
+}
+.pink-scroll-plain .gallery-title {
+    margin: 0; padding: 0 22px; color: #984b68; font-size: 1.2rem;
+    line-height: 1.5; text-align: center; overflow-wrap: anywhere;
+    text-shadow: none;
+}
+.pink-scroll-plain .gallery-title::before { content: '♡ '; color: #ad6b83; }
+.pink-scroll-plain .gallery-title::after { content: ' ♡'; color: #ad6b83; }
+.pink-scroll-plain .gallery-window { margin: 0 34px; overflow: hidden; }
+.pink-scroll-plain .scroll-container {
+    display: flex; flex-wrap: nowrap; align-items: center; gap: 15px; min-width: 0;
+    padding: 14px 0 15px; overflow-x: auto; overflow-y: hidden;
+    scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;
+}
+.pink-scroll-plain .scroll-container::-webkit-scrollbar { display: none; }
+/* p 묶음과 이미지 모두 축소 방지 */
+.pink-scroll-plain .scroll-container > p,
+.pink-scroll-plain .scroll-container img {
+    flex: 0 0 var(--w) !important;
+    width: var(--w) !important; min-width: var(--w) !important; max-width: var(--w) !important;
+    margin: 0 !important; padding: 0 !important;
+}
+.pink-scroll-plain .scroll-container > p { line-height: 0; }
+.pink-scroll-plain .scroll-container img {
+    position: relative; display: block !important; height: auto !important; box-sizing: border-box;
+    border: 2px solid #fffdfd; border-radius: 8px; background: #f9e8ef; color: #8e5268;
+    box-shadow: 0 4px 8px #0000004d; transition: transform .25s,box-shadow .25s;
+}
+.pink-scroll-plain .scroll-container:focus-visible { outline: 2px solid #e9b7c9; outline-offset: -3px; }
+.pink-scroll-plain .frame-sticker {
+    position: absolute; display: block; width: 30px; margin: 0; padding: 0;
+    font-size: 25px; line-height: 1.2; text-align: center; pointer-events: none;
+    user-select: none; z-index: 2; filter: drop-shadow(1px 2px 1px #00000020);
+}
+.pink-scroll-plain .sticker-top-left { top: 10px; left: 16px; transform: rotate(-16deg); }
+.pink-scroll-plain .sticker-top-right { top: 10px; right: 16px; transform: rotate(16deg); }
+.pink-scroll-plain .sticker-side-left { top: 57%; left: 4px; width: 24px; font-size: 20px; transform: rotate(-12deg); }
+.pink-scroll-plain .sticker-side-right { top: 57%; right: 4px; width: 24px; font-size: 20px; transform: rotate(12deg); }
+.pink-scroll-plain .sticker-bottom-left { bottom: 6px; left: 15px; transform: rotate(-12deg); }
+.pink-scroll-plain .sticker-bottom-right { bottom: 6px; right: 15px; transform: rotate(12deg); }
+.pink-scroll-plain .emoji-garland {
+    margin: 9px 34px 0; padding: 0; font-size: 16px; line-height: 1.5; text-align: center;
+    letter-spacing: .22em; pointer-events: none; user-select: none;
+}
+@media (hover: hover) {
+    .pink-scroll-plain .scroll-container img:hover { transform: scale(1.04); box-shadow: 0 7px 16px #00000040; z-index: 1; }
+}
+@media (max-width: 600px) { .pink-scroll-plain { --w: 240px; } }
+@media (prefers-reduced-motion: reduce) {
+    .pink-scroll-plain .scroll-container { scroll-behavior: auto; }
+    .pink-scroll-plain .scroll-container img { transition: none; }
+    .pink-scroll-plain .scroll-container img:hover { transform: none; }
+}
+.pink-scroll-plain .gallery-subtitle { margin: 6px 0 0; padding: 0 22px; color: #ad6b83; font-size: .88rem; line-height: 1.6; text-align: center; overflow-wrap: anywhere; }
+.pink-scroll-plain .album-footer { margin: 24px 34px 0; padding-top: 14px; border-top: 1px dashed #e9b7c9; color: #ad6b83; text-align: right; font-size: .85rem; line-height: 1.6; overflow-wrap: anywhere; }
+/* 배경 애니메이션 시작 */
+.pink-scroll-plain .pink-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.pink-scroll-plain .pink-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.pink-scroll-plain .pink-anim span { top: 105%; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 22'%3E%3Cpath fill='%23ec86ab' d='M12 21s-8-5.2-10.4-10C-.3 6.6 2.4 2 6.6 2c2.4 0 4.1 1.3 5.4 3.2C13.3 3.3 15 2 17.4 2c4.2 0 6.9 4.6 5 9-2.4 4.8-10.4 10-10.4 10z'/%3E%3C/svg%3E") center / contain no-repeat; opacity: 0;
+    animation-name: pk-rise, pk-sway; animation-timing-function: linear, ease-in-out; animation-iteration-count: infinite, infinite; animation-direction: normal, alternate; }
+.pink-scroll-plain .pink-anim span:nth-child(1) { left: 8%; width: 21px; height: 21px; animation-duration: 15s, 2.6s; animation-delay: 0s, 0s; }
+.pink-scroll-plain .pink-anim span:nth-child(2) { left: 23%; width: 15px; height: 15px; animation-duration: 19s, 2.6s; animation-delay: 6s, 0s; }
+.pink-scroll-plain .pink-anim span:nth-child(3) { left: 41%; width: 24px; height: 24px; animation-duration: 17s, 2.6s; animation-delay: 3s, 0s; }
+.pink-scroll-plain .pink-anim span:nth-child(4) { left: 62%; width: 17px; height: 17px; animation-duration: 21s, 2.6s; animation-delay: 9s, 0s; }
+.pink-scroll-plain .pink-anim span:nth-child(5) { left: 78%; width: 22px; height: 22px; animation-duration: 16s, 2.6s; animation-delay: 12s, 0s; }
+.pink-scroll-plain .pink-anim span:nth-child(6) { left: 91%; width: 14px; height: 14px; animation-duration: 20s, 2.6s; animation-delay: 4s, 0s; }
+.pink-scroll-plain .pink-anim span:nth-child(7) { left: 52%; width: 18px; height: 18px; animation-duration: 23s, 2.6s; animation-delay: 15s, 0s; }
+@keyframes pk-rise { 0% { top: 105%; opacity: 0; } 10% { opacity: .75; } 85% { opacity: .5; } 100% { top: -6%; opacity: 0; } }
+@keyframes pk-sway { from { translate: -10px 0; rotate: -10deg; } to { translate: 10px 0; rotate: 10deg; } }
+@media (prefers-reduced-motion: reduce) { .pink-scroll-plain .pink-anim span { display: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="pink-scroll-plain">
+    <div class="pink-anim" aria-hidden="true"><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span></div>
+    <!-- 🎀 테두리 장식: 이모지만 바꾸면 다른 스티커로 사용할 수 있어요. -->
+    <span class="frame-sticker sticker-top-left" aria-hidden="true">🎀</span>
+    <span class="frame-sticker sticker-top-right" aria-hidden="true">🍓</span>
+    <span class="frame-sticker sticker-side-left" aria-hidden="true">🌸</span>
+    <span class="frame-sticker sticker-side-right" aria-hidden="true">💗</span>
+    <span class="frame-sticker sticker-bottom-left" aria-hidden="true">🧸</span>
+    <span class="frame-sticker sticker-bottom-right" aria-hidden="true">🍰</span>
+
+    <!-- ✏️ 제목: 필요 없으면 이 h2 한 줄을 지우세요. -->
+    <h2 class="gallery-title">제목</h2>
+    <p class="gallery-subtitle">소제목</p>
+    <p class="emoji-garland" aria-hidden="true">🤍 🍒 🤍</p>
+
+    <div class="gallery-window">
+        <div class="scroll-container" tabindex="0" role="region" aria-label="좌우로 넘기는 사진 모음">
+
+            <!-- ✏️ 사진은 이곳에 한꺼번에 넣으세요. -->
+            <img src="이미지링크1" alt="사진1">
+            <img src="이미지링크2" alt="사진2">
+            <img src="이미지링크3" alt="사진3">
+            <img src="이미지링크4" alt="사진4">
+            <img src="이미지링크5" alt="사진5">
+
+        </div>
+    </div>
+
+    <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

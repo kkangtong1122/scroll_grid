@@ -1,0 +1,118 @@
+<style>
+.hw-scroll-polaroid {
+    --w: 280px;
+    position: relative; isolation: isolate; box-sizing: border-box;
+    max-width: 950px; min-width: 0; margin: 20px auto; padding: 44px 0 34px; overflow: hidden;
+    background: radial-gradient(circle at top right,#40204f,transparent 65%),
+                radial-gradient(#ffffff28 1px,transparent 1.5px) 0 0/27px 27px #100916;
+    border: 1px solid #ff861d; border-radius: 18px;
+    box-shadow: 0 0 24px #ff7a0040,inset 0 0 35px #8a2be226;
+    font-family: 'Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+}
+.hw-scroll-polaroid .gallery-title {
+    margin: 0; padding: 0 22px; color: #fff1db; font-size: 1.2rem;
+    line-height: 1.5; text-align: center; overflow-wrap: anywhere;
+    text-shadow: 0 0 14px #ff7a00,0 0 25px #8a2be2;
+}
+.hw-scroll-polaroid .gallery-title::before { content: '🎃 '; color: #ffcc99; }
+.hw-scroll-polaroid .gallery-title::after { content: ' 🎃'; color: #ffcc99; }
+.hw-scroll-polaroid .gallery-window { margin: 0 34px; overflow: hidden; }
+.hw-scroll-polaroid .scroll-container {
+    display: flex; flex-wrap: nowrap; align-items: center; gap: 28px; min-width: 0;
+    padding: 32px 20px; overflow-x: auto; overflow-y: hidden;
+    scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;
+}
+.hw-scroll-polaroid .scroll-container::-webkit-scrollbar { display: none; }
+/* p 묶음과 이미지 모두 축소 방지 */
+.hw-scroll-polaroid .scroll-container > p,
+.hw-scroll-polaroid .scroll-container img {
+    flex: 0 0 var(--w) !important;
+    width: var(--w) !important; min-width: var(--w) !important; max-width: var(--w) !important;
+    margin: 0 !important; padding: 0 !important;
+}
+.hw-scroll-polaroid .scroll-container > p { line-height: 0; }
+.hw-scroll-polaroid .scroll-container img {
+    position: relative; display: block !important; height: auto !important; box-sizing: border-box;
+    padding: 10px 10px 38px !important;
+    border: 1px solid #ffd5a3; border-radius: 3px; background: #fffaf0; color: #66334e;
+    box-shadow: 0 7px 12px #00000080,0 0 8px #ff8a0080,0 0 20px #ff6a004d;
+    transform: rotate(var(--tilt,-2deg)); transition: transform .25s,box-shadow .25s;
+}
+.hw-scroll-polaroid .scroll-container:focus-visible { outline: 2px solid #ff861d; outline-offset: -3px; }
+.hw-scroll-polaroid .frame-sticker {
+    position: absolute; display: block; width: 30px; margin: 0; padding: 0;
+    font-size: 25px; line-height: 1.2; text-align: center; pointer-events: none;
+    user-select: none; z-index: 2; filter: drop-shadow(1px 2px 1px #00000020);
+}
+.hw-scroll-polaroid .sticker-top-left { top: 10px; left: 16px; transform: rotate(-16deg); }
+.hw-scroll-polaroid .sticker-top-right { top: 10px; right: 16px; transform: rotate(16deg); }
+.hw-scroll-polaroid .sticker-side-left { top: 57%; left: 4px; width: 24px; font-size: 20px; transform: rotate(-12deg); }
+.hw-scroll-polaroid .sticker-side-right { top: 57%; right: 4px; width: 24px; font-size: 20px; transform: rotate(12deg); }
+.hw-scroll-polaroid .sticker-bottom-left { bottom: 6px; left: 15px; transform: rotate(-12deg); }
+.hw-scroll-polaroid .sticker-bottom-right { bottom: 6px; right: 15px; transform: rotate(12deg); }
+.hw-scroll-polaroid .emoji-garland {
+    margin: 9px 34px 0; padding: 0; font-size: 16px; line-height: 1.5; text-align: center;
+    letter-spacing: .22em; pointer-events: none; user-select: none;
+}
+@media (hover: hover) {
+    .hw-scroll-polaroid .scroll-container img:hover { transform: rotate(0deg) translateY(-3px); box-shadow: 0 9px 14px #00000080,0 0 10px #ff9a00b3,0 0 24px #ff6a0066; z-index: 1; }
+}
+@media (max-width: 600px) { .hw-scroll-polaroid { --w: 240px; } }
+@media (prefers-reduced-motion: reduce) {
+    .hw-scroll-polaroid .scroll-container { scroll-behavior: auto; }
+    .hw-scroll-polaroid .scroll-container img { transition: none; }
+    .hw-scroll-polaroid .scroll-container img:hover { transform: rotate(var(--tilt,-2deg)); }
+}
+.hw-scroll-polaroid .scroll-container > :nth-child(4n+1) { --tilt: -2deg; }
+.hw-scroll-polaroid .scroll-container > :nth-child(4n+2) { --tilt: 1.5deg; }
+.hw-scroll-polaroid .scroll-container > :nth-child(4n+3) { --tilt: -1deg; }
+.hw-scroll-polaroid .scroll-container > :nth-child(4n+4) { --tilt: 2deg; }
+.hw-scroll-polaroid .gallery-subtitle { margin: 6px 0 0; padding: 0 22px; color: #ffcc99; font-size: .88rem; line-height: 1.6; text-align: center; overflow-wrap: anywhere; }
+.hw-scroll-polaroid .album-footer { margin: 24px 34px 0; padding-top: 14px; border-top: 1px dashed #ff861d; color: #ffcc99; text-align: right; font-size: .85rem; line-height: 1.6; overflow-wrap: anywhere; }
+/* 배경 애니메이션 시작 */
+.hw-scroll-polaroid .halloween-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.hw-scroll-polaroid .halloween-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.hw-scroll-polaroid .halloween-anim::before { content: ""; position: absolute; inset: -10%;
+    background: radial-gradient(circle at 18% 12%, #ff861d38, transparent 38%), radial-gradient(circle at 82% 65%, #8a2be238, transparent 42%);
+    animation: hw-glow 4.5s ease-in-out infinite alternate; }
+.hw-scroll-polaroid .halloween-anim span { left: -60px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath fill='%232a1238' d='M20 6c1-2 2-3 2-3l1 3c3-1 7-3 11-1-2 1-3 3-3 5 2 0 4 1 5 3-3-1-6 0-8 2-1-1-3-1-4 0-1 2-2 4-4 5-2-1-3-3-4-5-1-1-3-1-4 0-2-2-5-3-8-2 1-2 3-3 5-3 0-2-1-4-3-5 4-2 8 0 11 1l1-3s1 1 2 3z'/%3E%3C/svg%3E") center / contain no-repeat; filter: drop-shadow(0 0 4px #ff861dcc) drop-shadow(0 0 1px #ffb36b);
+    animation-name: hw-fly, hw-flap; animation-timing-function: linear, ease-in-out; animation-iteration-count: infinite, infinite; animation-direction: normal, alternate; }
+.hw-scroll-polaroid .halloween-anim span:nth-child(1) { top: 60px; width: 52px; height: 26px; animation-duration: 13s, .22s; animation-delay: 0s, 0s; }
+.hw-scroll-polaroid .halloween-anim span:nth-child(2) { top: 170px; width: 40px; height: 20px; animation-duration: 18s, .22s; animation-delay: 4s, 0s; }
+.hw-scroll-polaroid .halloween-anim span:nth-child(3) { top: 290px; width: 58px; height: 29px; animation-duration: 22s, .22s; animation-delay: 8s, 0s; }
+.hw-scroll-polaroid .halloween-anim span:nth-child(4) { top: 110px; width: 34px; height: 17px; animation-duration: 16s, .22s; animation-delay: 11s, 0s; }
+@keyframes hw-glow { from { opacity: .35; } to { opacity: 1; } }
+@keyframes hw-fly { 0% { left: -60px; transform: translateY(0); } 25% { transform: translateY(-16px); } 50% { transform: translateY(8px); } 75% { transform: translateY(-10px); } 100% { left: 105%; transform: translateY(0); } }
+@keyframes hw-flap { from { scale: 1 1; } to { scale: 1 .45; } }
+@media (prefers-reduced-motion: reduce) { .hw-scroll-polaroid .halloween-anim::before { animation: none; opacity: .7; } .hw-scroll-polaroid .halloween-anim span { display: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="hw-scroll-polaroid">
+    <div class="halloween-anim" aria-hidden="true"><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span></div>
+    
+    <span class="frame-sticker sticker-top-left" aria-hidden="true">🕸️</span>
+    <span class="frame-sticker sticker-top-right" aria-hidden="true">🦇</span>
+    <span class="frame-sticker sticker-side-left" aria-hidden="true">👻</span>
+    <span class="frame-sticker sticker-side-right" aria-hidden="true">🍬</span>
+    <span class="frame-sticker sticker-bottom-left" aria-hidden="true">🎃</span>
+    <span class="frame-sticker sticker-bottom-right" aria-hidden="true">🕯️</span>
+
+    
+    <h2 class="gallery-title">제목</h2>
+    <p class="gallery-subtitle">소제목</p>
+    <p class="emoji-garland" aria-hidden="true">🧡 💜<span>​</span> 🧡</p>
+
+    <div class="gallery-window">
+        <div class="scroll-container">
+
+<p><img src="이미지링크1" alt="사진1"></p><p><img src="이미지링크2" alt="사진2"></p><p><img src="이미지링크3" alt="사진3"></p>
+<p><img src="이미지링크4" alt="사진4"></p>
+<p><img src="이미지링크5" alt="사진5"></p><p><img src="이미지링크6" alt="사진6"></p><p><img src="이미지링크7" alt="사진7"></p><p><img src="이미지링크8" alt="사진8"></p>
+<p><img src="이미지링크9" alt="사진9"></p>
+<p><img src="이미지링크10" alt="사진10"></p>
+        </div>
+    </div>
+
+    <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

@@ -1,0 +1,185 @@
+<style>
+/* 할로윈 — 사진은 img만, 글씨는 p만 순서대로 넣으세요. */
+.hw-grid-polaroid-text {
+  width: 100%; max-width: 1100px; margin: 30px auto; padding: 55px 35px 35px;
+  box-sizing: border-box; position: relative; isolation: isolate;
+  background-color: #100916; background-image: radial-gradient(circle at top right, #40204f, transparent 65%), radial-gradient(#ffffff28 1px, transparent 1.5px);
+  background-size: 100% 100%, 27px 27px; border: 2px solid #ff861d; border-radius: 16px;
+  box-shadow: 0 0 24px #ff7a0040, inset 0 0 35px #8a2be226; font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+}
+.hw-grid-polaroid-text *, .hw-grid-polaroid-text *::before, .hw-grid-polaroid-text *::after { box-sizing: border-box; }
+.hw-grid-polaroid-text::before, .hw-grid-polaroid-text::after { position: absolute; top: 12px; font-size: 2.5rem; line-height: 1; pointer-events: none; }
+.hw-grid-polaroid-text::before { content: '🕸️'; left: 10px; transform: rotate(-18deg); }
+.hw-grid-polaroid-text::after { content: '🦇'; right: 10px; transform: rotate(18deg); }
+.hw-grid-polaroid-text .album-heading { position: relative; margin-bottom: 45px; text-align: center; color: #fff1db; }
+.hw-grid-polaroid-text .album-heading::before { content: 'THE MIDNIGHT MEMORY CLUB'; display: block; margin-bottom: 14px; color: #ffcc99; font: 0.65rem Georgia, serif; letter-spacing: 0.16em; }
+.hw-grid-polaroid-text .album-heading::after { content: '✦ 🎃 ✦'; display: block; margin-top: 18px; letter-spacing: 0.25em; }
+.hw-grid-polaroid-text .album-heading h2 { display: inline-block; max-width: 100%; margin: 0; padding-bottom: 10px; color: #fff1db; border-bottom: 2px dashed #ff861d; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.4; overflow-wrap: anywhere; text-shadow: 0 0 14px #ff7a00, 0 0 25px #8a2be2; }
+.hw-grid-polaroid-text .album-heading p { margin: 15px 0 0; color: #ffcc99; font-size: 0.9rem; line-height: 1.6; }
+
+/* 글씨와 사진을 같은 칸에 배치 */
+.hw-grid-polaroid-text .batch-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 460px; gap: 40px 32px; isolation: isolate; }
+.hw-grid-polaroid-text .captions, .hw-grid-polaroid-text .photos { display: contents; }
+.hw-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row2); grid-column: var(--col, 1); min-width: 0; position: relative; transform: rotate(var(--tilt, 0deg)); }
+
+/* img 하나가 폴라로이드 한 장입니다. 아래 흰 여백은 글씨가 없어도 유지됩니다. */
+.hw-grid-polaroid-text .photos img {
+  display: block !important; box-sizing: border-box !important;
+  width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+  height: 460px !important; margin: 0 !important;
+  padding: 12px 12px 84px !important; object-fit: contain !important;
+  background-color: #fff8eb; border: 1px solid #ffd5a3; border-radius: 3px;
+  box-shadow: 0 6px 12px #00000066,0 0 8px #ff8a0066,0 0 18px #ff6a003d; color: #66334e; font-size: 0.8rem;
+  transform-origin: 50% 50%; z-index: 0;
+}
+
+/* 글씨의 회전 중심을 사진 중심에 맞춰 함께 기울어지게 합니다.
+   카드 높이 460px / 글씨 시작 236px / 중심 160px → -76px */
+.hw-grid-polaroid-text .captions > p {
+  align-self: end; width: auto; height: 66px; margin: 0 18px 18px; padding: 0;
+  color: #66334e; font-size: 0.95rem; line-height: 1.5; text-align: center;
+  word-break: keep-all; overflow-wrap: anywhere; overflow: auto;
+  scrollbar-width: thin; scrollbar-color: #e88432 #f5e2d0;
+  transform-origin: 50% -146px; z-index: 1;
+}
+
+/* 기울기와 열 위치 자동 반복 */
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(5n + 1) { --tilt: -2deg; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(5n + 2) { --tilt: 1.5deg; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(5n + 3) { --tilt: -1deg; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(5n + 4) { --tilt: 2deg; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(5n + 5) { --tilt: -0.5deg; }
+
+
+
+
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(odd) { --col: 1; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(even) { --col: 2; }
+
+/* 최대 50장의 사진·글씨 위치 */
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(1) { --row3: 1; --row2: 1; --row1: 1; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(2) { --row3: 1; --row2: 1; --row1: 2; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(3) { --row3: 1; --row2: 2; --row1: 3; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(4) { --row3: 2; --row2: 2; --row1: 4; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(5) { --row3: 2; --row2: 3; --row1: 5; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(6) { --row3: 2; --row2: 3; --row1: 6; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(7) { --row3: 3; --row2: 4; --row1: 7; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(8) { --row3: 3; --row2: 4; --row1: 8; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(9) { --row3: 3; --row2: 5; --row1: 9; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(10) { --row3: 4; --row2: 5; --row1: 10; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(11) { --row3: 4; --row2: 6; --row1: 11; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(12) { --row3: 4; --row2: 6; --row1: 12; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(13) { --row3: 5; --row2: 7; --row1: 13; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(14) { --row3: 5; --row2: 7; --row1: 14; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(15) { --row3: 5; --row2: 8; --row1: 15; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(16) { --row3: 6; --row2: 8; --row1: 16; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(17) { --row3: 6; --row2: 9; --row1: 17; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(18) { --row3: 6; --row2: 9; --row1: 18; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(19) { --row3: 7; --row2: 10; --row1: 19; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(20) { --row3: 7; --row2: 10; --row1: 20; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(21) { --row3: 7; --row2: 11; --row1: 21; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(22) { --row3: 8; --row2: 11; --row1: 22; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(23) { --row3: 8; --row2: 12; --row1: 23; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(24) { --row3: 8; --row2: 12; --row1: 24; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(25) { --row3: 9; --row2: 13; --row1: 25; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(26) { --row3: 9; --row2: 13; --row1: 26; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(27) { --row3: 9; --row2: 14; --row1: 27; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(28) { --row3: 10; --row2: 14; --row1: 28; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(29) { --row3: 10; --row2: 15; --row1: 29; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(30) { --row3: 10; --row2: 15; --row1: 30; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(31) { --row3: 11; --row2: 16; --row1: 31; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(32) { --row3: 11; --row2: 16; --row1: 32; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(33) { --row3: 11; --row2: 17; --row1: 33; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(34) { --row3: 12; --row2: 17; --row1: 34; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(35) { --row3: 12; --row2: 18; --row1: 35; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(36) { --row3: 12; --row2: 18; --row1: 36; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(37) { --row3: 13; --row2: 19; --row1: 37; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(38) { --row3: 13; --row2: 19; --row1: 38; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(39) { --row3: 13; --row2: 20; --row1: 39; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(40) { --row3: 14; --row2: 20; --row1: 40; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(41) { --row3: 14; --row2: 21; --row1: 41; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(42) { --row3: 14; --row2: 21; --row1: 42; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(43) { --row3: 15; --row2: 22; --row1: 43; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(44) { --row3: 15; --row2: 22; --row1: 44; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(45) { --row3: 15; --row2: 23; --row1: 45; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(46) { --row3: 16; --row2: 23; --row1: 46; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(47) { --row3: 16; --row2: 24; --row1: 47; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(48) { --row3: 16; --row2: 24; --row1: 48; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(49) { --row3: 17; --row2: 25; --row1: 49; }
+.hw-grid-polaroid-text .batch-grid > div > :nth-child(50) { --row3: 17; --row2: 25; --row1: 50; }
+
+.hw-grid-polaroid-text .album-footer { margin-top: 45px; padding-top: 18px; border-top: 1px dashed #ff861d; color: #ffcc99; text-align: right; font-size: 0.85rem; line-height: 1.6; }
+@media (max-width: 900px) {
+  .hw-grid-polaroid-text .batch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hw-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row2); }
+  .hw-grid-polaroid-text .batch-grid > div > :nth-child(odd) { --col: 1; }
+  .hw-grid-polaroid-text .batch-grid > div > :nth-child(even) { --col: 2; }
+}
+@media (max-width: 600px) {
+  .hw-grid-polaroid-text { padding: 55px 24px 30px; }
+  .hw-grid-polaroid-text .batch-grid { grid-template-columns: minmax(0, 1fr); }
+  .hw-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row1); grid-column: 1; }
+}
+
+/* 업로드 편집기가 추가한 p도 사진 한 칸으로 처리합니다. */
+.hw-grid-polaroid-text .photos > p {
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    height: 460px !important; margin: 0 !important; padding: 0 !important;
+    line-height: 0; overflow: visible;
+}
+.hw-grid-polaroid-text .photos > p { transform-origin: 50% 50%; z-index: 0; }
+/* 배경 애니메이션 시작 */
+.hw-grid-polaroid-text .halloween-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.hw-grid-polaroid-text .halloween-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.hw-grid-polaroid-text .halloween-anim::before { content: ""; position: absolute; inset: -10%;
+    background: radial-gradient(circle at 18% 12%, #ff861d38, transparent 38%), radial-gradient(circle at 82% 65%, #8a2be238, transparent 42%);
+    animation: hw-glow 4.5s ease-in-out infinite alternate; }
+.hw-grid-polaroid-text .halloween-anim span { left: -60px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cpath fill='%232a1238' d='M20 6c1-2 2-3 2-3l1 3c3-1 7-3 11-1-2 1-3 3-3 5 2 0 4 1 5 3-3-1-6 0-8 2-1-1-3-1-4 0-1 2-2 4-4 5-2-1-3-3-4-5-1-1-3-1-4 0-2-2-5-3-8-2 1-2 3-3 5-3 0-2-1-4-3-5 4-2 8 0 11 1l1-3s1 1 2 3z'/%3E%3C/svg%3E") center / contain no-repeat; filter: drop-shadow(0 0 4px #ff861dcc) drop-shadow(0 0 1px #ffb36b);
+    animation-name: hw-fly, hw-flap; animation-timing-function: linear, ease-in-out; animation-iteration-count: infinite, infinite; animation-direction: normal, alternate; }
+.hw-grid-polaroid-text .halloween-anim span:nth-child(1) { top: 60px; width: 52px; height: 26px; animation-duration: 13s, .22s; animation-delay: 0s, 0s; }
+.hw-grid-polaroid-text .halloween-anim span:nth-child(2) { top: 170px; width: 40px; height: 20px; animation-duration: 18s, .22s; animation-delay: 4s, 0s; }
+.hw-grid-polaroid-text .halloween-anim span:nth-child(3) { top: 290px; width: 58px; height: 29px; animation-duration: 22s, .22s; animation-delay: 8s, 0s; }
+.hw-grid-polaroid-text .halloween-anim span:nth-child(4) { top: 110px; width: 34px; height: 17px; animation-duration: 16s, .22s; animation-delay: 11s, 0s; }
+@keyframes hw-glow { from { opacity: .35; } to { opacity: 1; } }
+@keyframes hw-fly { 0% { left: -60px; transform: translateY(0); } 25% { transform: translateY(-16px); } 50% { transform: translateY(8px); } 75% { transform: translateY(-10px); } 100% { left: 105%; transform: translateY(0); } }
+@keyframes hw-flap { from { scale: 1 1; } to { scale: 1 .45; } }
+@media (prefers-reduced-motion: reduce) { .hw-grid-polaroid-text .halloween-anim::before { animation: none; opacity: .7; } .hw-grid-polaroid-text .halloween-anim span { display: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="hw-grid-polaroid-text">
+    <div class="halloween-anim" aria-hidden="true"><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span></div>
+  <!-- ✏️ 1. 제목과 소제목 -->
+  <div class="album-heading">
+    <h2>제목</h2>
+    <p>소제목</p>
+  </div>
+
+  <div class="batch-grid">
+    <!-- ✏️ 2. 글씨는 여기에 한꺼번에 입력하세요.
+         사진만 쓰려면 captions 묶음을 통째로 지우세요.
+         특정 사진만 글씨를 비우려면 <p></p>를 남겨 순서를 맞추세요. -->
+    <div class="captions">
+      <p>첫 번째 사진에 하고 싶은 말</p>
+      <p>두 번째 사진에 하고 싶은 말</p>
+      <p>세 번째 사진에 하고 싶은 말</p>
+      <p>네 번째 사진에 하고 싶은 말</p>
+      <p>다섯 번째 사진에 하고 싶은 말</p>
+      <p>여섯 번째 사진에 하고 싶은 말</p>
+    </div>
+
+    <!-- ✏️ 3. 사진은 여기에 한꺼번에 입력하세요. 최대 50장.
+         img 한 줄이 폴라로이드 한 장입니다. -->
+    <div class="photos">
+      <img src="이미지링크1" alt="사진1">
+      <img src="이미지링크2" alt="사진2">
+      <img src="이미지링크3" alt="사진3">
+      <img src="이미지링크4" alt="사진4">
+      <img src="이미지링크5" alt="사진5">
+      <img src="이미지링크6" alt="사진6">
+    </div>
+  </div>
+
+  <!-- ✏️ 4. 날짜 또는 서명 -->
+  <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

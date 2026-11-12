@@ -1,0 +1,165 @@
+<style>
+.cream-scroll-polaroid-text {
+    width: 100%; max-width: 900px; min-width: 0; margin: 20px auto;
+    padding: 40px; box-sizing: border-box; background: #fffef8;
+    border: 1px solid #dcdcdc; box-shadow: 5px 5px 15px #0000000d;
+    font-family: "Nanum Myeongjo", "Batang", serif;
+}
+.cream-scroll-polaroid-text .album-heading { margin-bottom: 30px; text-align: center; color: #5d4037; }
+.cream-scroll-polaroid-text .album-heading h2 {
+    display: inline-block; margin: 0; padding-bottom: 10px;
+    border-bottom: 2px dashed #8d6e63; font-size: 1.8rem; color: inherit;
+}
+.cream-scroll-polaroid-text .album-heading p { margin: 12px 0 0; color: #8d6e63; }
+.cream-scroll-polaroid-text .album-footer { margin-top: 30px; color: #999; text-align: right; font-size: .9rem; }
+.cream-scroll-polaroid-text .photos > p { margin: 0 !important; padding: 0 !important; min-width: 0; line-height: 0; }
+.cream-scroll-polaroid-text .photos > p > br { display: none; }
+.cream-scroll-polaroid-text .photos img {
+    display: block !important; box-sizing: border-box !important;
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    height: auto !important; margin: 0 !important; padding: 12px 12px 42px !important; background: #fff; border: 1px solid #eee; border-radius: 3px; box-shadow: 2px 3px 8px #0000001f;
+    transition: box-shadow .25s;
+}
+@media (max-width: 600px) { .cream-scroll-polaroid-text { padding: 30px 20px; } }
+@media (prefers-reduced-motion: reduce) { .cream-scroll-polaroid-text .photos img { transition: none; } }
+
+.cream-scroll-polaroid-text { padding-left: 0; padding-right: 0; overflow: hidden; }
+.cream-scroll-polaroid-text .album-heading, .cream-scroll-polaroid-text .album-footer { margin-left: 34px; margin-right: 34px; }
+.cream-scroll-polaroid-text .gallery-window { margin: 0 34px; overflow: hidden; }
+.cream-scroll-polaroid-text .photos {
+    --w: 280px; display: flex; align-items: center; gap: 24px;
+    min-width: 0; padding: 24px 18px; overflow-x: auto; scrollbar-width: none;
+}
+.cream-scroll-polaroid-text .photos::-webkit-scrollbar { display: none; }
+.cream-scroll-polaroid-text .photos > img, .cream-scroll-polaroid-text .photos > p {
+    flex: 0 0 var(--w); width: var(--w) !important; max-width: var(--w) !important;
+}
+.cream-scroll-polaroid-text .photos:focus-visible { outline: 2px solid #8d6e63; outline-offset: -2px; }
+@media (max-width: 600px) { .cream-scroll-polaroid-text .photos { --w: 240px; } }
+.cream-scroll-polaroid-text { position: relative; isolation: isolate; }
+.cream-scroll-polaroid-text::before, .cream-scroll-polaroid-text::after { position: absolute; top: 12px; z-index: 2; font-size: 2rem; line-height: 1; pointer-events: none; }
+.cream-scroll-polaroid-text::before { content: '📷'; left: 12px; transform: rotate(-14deg); }
+.cream-scroll-polaroid-text::after { content: '🤎'; right: 12px; transform: rotate(14deg); }
+/* 배경 애니메이션 시작 */
+.cream-scroll-polaroid-text .cream-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.cream-scroll-polaroid-text .cream-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.cream-scroll-polaroid-text .cream-anim::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 199px 439px, #e8d3b14d, transparent 63px), radial-gradient(circle at 588px 22px, #e8d3b14d, transparent 75px), radial-gradient(circle at 16px 278px, #e8d3b14d, transparent 63px), radial-gradient(circle at 72px 448px, #dcc3a040, transparent 70px), radial-gradient(circle at 115px 322px, #efdcc066, transparent 55px), radial-gradient(circle at 187px 258px, #efdcc066, transparent 88px), radial-gradient(circle at 548px 192px, #e8d3b14d, transparent 51px), radial-gradient(circle at 240px 582px, #e8d3b14d, transparent 74px), radial-gradient(circle at 66px 143px, #e8d3b14d, transparent 46px); background-size: 760px 640px, 760px 640px, 760px 640px, 760px 640px, 760px 640px, 760px 640px, 760px 640px, 760px 640px, 760px 640px;
+    animation: cr-drift 70s linear infinite; }
+.cream-scroll-polaroid-text .cream-anim::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 199px 276px, #d8b88fb3 1.4px, transparent 2.2px), radial-gradient(circle at 49px 339px, #c9a57acc 1.1px, transparent 1.9px), radial-gradient(circle at 295px 248px, #c9a57acc 1.2px, transparent 2.0px), radial-gradient(circle at 336px 224px, #c9a57acc 0.8px, transparent 1.6px), radial-gradient(circle at 164px 45px, #d8b88fb3 1.1px, transparent 1.9px), radial-gradient(circle at 196px 241px, #c9a57acc 1.3px, transparent 2.1px), radial-gradient(circle at 413px 216px, #d8b88fb3 0.9px, transparent 1.7px), radial-gradient(circle at 478px 155px, #d8b88fb3 0.9px, transparent 1.7px), radial-gradient(circle at 273px 202px, #c9a57acc 1.3px, transparent 2.1px), radial-gradient(circle at 433px 39px, #d8b88fb3 1.0px, transparent 1.8px), radial-gradient(circle at 6px 446px, #c9a57acc 1.1px, transparent 1.9px), radial-gradient(circle at 353px 407px, #d8b88fb3 0.8px, transparent 1.6px), radial-gradient(circle at 9px 134px, #c9a57acc 1.1px, transparent 1.9px), radial-gradient(circle at 35px 221px, #c9a57acc 0.9px, transparent 1.7px); background-size: 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px;
+    animation: cr-twinkle 3.4s ease-in-out infinite alternate; }
+@keyframes cr-drift { from { background-position: 0 0; } to { background-position: 760px 640px; } }
+@keyframes cr-twinkle { from { opacity: .15; } to { opacity: .9; } }
+@media (prefers-reduced-motion: reduce) { .cream-scroll-polaroid-text .cream-anim::before, .cream-scroll-polaroid-text .cream-anim::after { animation: none; } }
+/* 배경 애니메이션 끝 */
+
+/* ===== 사진+글씨 스크롤: 사진과 같은 순서의 글씨를 폴라로이드 아래 흰 여백에 겹칩니다. 최대 50장. ===== */
+.cream-scroll-polaroid-text .photos.with-captions {
+    --h: 380px;
+    display: grid !important; grid-auto-flow: column; grid-auto-columns: var(--w);
+    grid-template-rows: auto; align-items: stretch; justify-content: start;
+}
+.cream-scroll-polaroid-text .photos.with-captions > .captions, .cream-scroll-polaroid-text .photos.with-captions > .photos-in, .cream-scroll-polaroid-text .photos.with-captions .photos-in > p { display: contents !important; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > p > br { display: none; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in img {
+    grid-row: 1; grid-column: var(--col);
+    width: var(--w) !important; min-width: 0 !important; max-width: var(--w) !important;
+    height: var(--h) !important; padding-bottom: 78px !important;
+    object-fit: contain; flex: none !important; margin: 0 !important;
+}
+.cream-scroll-polaroid-text .photos.with-captions > .captions > p {
+    position: relative; z-index: 2; grid-row: 1; grid-column: var(--col); align-self: end;
+    display: flex; align-items: center; justify-content: center; box-sizing: border-box;
+    height: 66px; margin: 0 16px 8px !important; padding: 0 !important;
+    color: #555; font-size: .92rem; line-height: 1.45; text-align: center;
+    word-break: keep-all; overflow-wrap: anywhere; overflow: auto;
+}
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(1), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(1) { --col: 1; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(2), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(2) { --col: 2; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(3), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(3) { --col: 3; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(4), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(4) { --col: 4; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(5), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(5) { --col: 5; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(6), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(6) { --col: 6; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(7), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(7) { --col: 7; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(8), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(8) { --col: 8; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(9), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(9) { --col: 9; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(10), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(10) { --col: 10; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(11), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(11) { --col: 11; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(12), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(12) { --col: 12; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(13), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(13) { --col: 13; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(14), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(14) { --col: 14; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(15), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(15) { --col: 15; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(16), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(16) { --col: 16; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(17), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(17) { --col: 17; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(18), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(18) { --col: 18; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(19), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(19) { --col: 19; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(20), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(20) { --col: 20; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(21), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(21) { --col: 21; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(22), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(22) { --col: 22; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(23), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(23) { --col: 23; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(24), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(24) { --col: 24; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(25), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(25) { --col: 25; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(26), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(26) { --col: 26; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(27), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(27) { --col: 27; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(28), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(28) { --col: 28; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(29), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(29) { --col: 29; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(30), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(30) { --col: 30; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(31), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(31) { --col: 31; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(32), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(32) { --col: 32; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(33), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(33) { --col: 33; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(34), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(34) { --col: 34; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(35), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(35) { --col: 35; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(36), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(36) { --col: 36; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(37), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(37) { --col: 37; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(38), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(38) { --col: 38; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(39), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(39) { --col: 39; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(40), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(40) { --col: 40; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(41), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(41) { --col: 41; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(42), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(42) { --col: 42; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(43), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(43) { --col: 43; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(44), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(44) { --col: 44; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(45), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(45) { --col: 45; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(46), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(46) { --col: 46; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(47), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(47) { --col: 47; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(48), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(48) { --col: 48; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(49), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(49) { --col: 49; }
+.cream-scroll-polaroid-text .photos.with-captions .photos-in > :nth-child(50), .cream-scroll-polaroid-text .photos.with-captions > .captions > :nth-child(50) { --col: 50; }
+@media (max-width: 600px) { .cream-scroll-polaroid-text .photos.with-captions { --h: 330px; } }
+</style>
+
+<div class="cream-scroll-polaroid-text">
+    <div class="cream-anim" aria-hidden="true">&#8203;</div>
+    <div class="album-heading">
+        <h2>제목</h2>
+        <p>소제목</p>
+    </div>
+    <!-- 사진을 직접 넣거나, p 하나당 사진 한 장을 넣으세요. -->
+    <div class="gallery-window">
+        <div class="photos with-captions" tabindex="0" role="region" aria-label="사진 앨범 가로 스크롤">
+            <!-- 글씨를 사진과 같은 순서로 넣으세요. 글씨를 비우려면 <p></p>를 남겨 순서를 맞추세요. -->
+            <div class="captions">
+                <p>1번째 사진에 하고 싶은 말</p>
+                <p>2번째 사진에 하고 싶은 말</p>
+                <p>3번째 사진에 하고 싶은 말</p>
+                <p>4번째 사진에 하고 싶은 말</p>
+                <p>5번째 사진에 하고 싶은 말</p>
+                <p>6번째 사진에 하고 싶은 말</p>
+                <p>7번째 사진에 하고 싶은 말</p>
+                <p>8번째 사진에 하고 싶은 말</p>
+                <p>9번째 사진에 하고 싶은 말</p>
+            </div>
+            <!-- 사진을 같은 순서로 넣으세요. p 하나에는 사진 한 장만 넣습니다. -->
+            <div class="photos-in">
+                <img src="이미지링크1" alt="사진1">
+                <img src="이미지링크2" alt="사진2">
+                <img src="이미지링크3" alt="사진3">
+                <img src="이미지링크4" alt="사진4">
+                <img src="이미지링크5" alt="사진5">
+                <img src="이미지링크6" alt="사진6">
+                <img src="이미지링크7" alt="사진7">
+                <img src="이미지링크8" alt="사진8">
+                <img src="이미지링크9" alt="사진9">
+            </div>
+        </div>
+    </div>
+    <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

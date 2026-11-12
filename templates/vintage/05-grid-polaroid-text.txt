@@ -1,0 +1,180 @@
+<style>
+/* 빈티지 — 사진은 img만, 글씨는 p만 순서대로 넣으세요. */
+.vintage-grid-polaroid-text {
+  width: 100%; max-width: 1100px; margin: 30px auto; padding: 55px 35px 35px;
+  box-sizing: border-box; position: relative; isolation: isolate;
+   
+   border: 2px solid #cdb895; border-radius: 16px;
+  box-shadow: 0 0 24px #b3977140, inset 0 0 35px #b3977126; font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+
+    background-color: #f4ebd9; background-image: radial-gradient(#75552d1f 0.6px, transparent 0.8px), linear-gradient(115deg, #ffffff59, transparent 55%, #a7804812); background-size: 7px 7px, 100% 100%;
+}
+.vintage-grid-polaroid-text *, .vintage-grid-polaroid-text *::before, .vintage-grid-polaroid-text *::after { box-sizing: border-box; }
+.vintage-grid-polaroid-text::before, .vintage-grid-polaroid-text::after { position: absolute; top: 12px; font-size: 2.5rem; line-height: 1; pointer-events: none; }
+.vintage-grid-polaroid-text::before { content: '🧸'; left: 10px; transform: rotate(-18deg); }
+.vintage-grid-polaroid-text::after { content: '✉️'; right: 10px; transform: rotate(18deg); }
+.vintage-grid-polaroid-text .album-heading { position: relative; margin-bottom: 45px; text-align: center; color: #674733; }
+.vintage-grid-polaroid-text .album-heading::before { content: 'THE LITTLE ARCHIVE'; display: block; margin-bottom: 14px; color: #93785e; font: 0.65rem Georgia, serif; letter-spacing: 0.16em; }
+.vintage-grid-polaroid-text .album-heading::after { content: '—  ❦  —'; display: block; margin-top: 18px; letter-spacing: 0.25em; }
+.vintage-grid-polaroid-text .album-heading h2 { display: inline-block; max-width: 100%; margin: 0; padding-bottom: 10px; color: #674733; border-bottom: 2px dashed #cdb895; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.4; overflow-wrap: anywhere; text-shadow: none; }
+.vintage-grid-polaroid-text .album-heading p { margin: 15px 0 0; color: #93785e; font-size: 0.9rem; line-height: 1.6; }
+
+/* 글씨와 사진을 같은 칸에 배치 */
+.vintage-grid-polaroid-text .batch-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 460px; gap: 40px 32px; isolation: isolate; }
+.vintage-grid-polaroid-text .captions, .vintage-grid-polaroid-text .photos { display: contents; }
+.vintage-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row2); grid-column: var(--col, 1); min-width: 0; position: relative; transform: rotate(var(--tilt, 0deg)); }
+
+/* img 하나가 폴라로이드 한 장입니다. 아래 흰 여백은 글씨가 없어도 유지됩니다. */
+.vintage-grid-polaroid-text .photos img {
+  display: block !important; box-sizing: border-box !important;
+  width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+  height: 460px !important; margin: 0 !important;
+  padding: 12px 12px 84px !important; object-fit: contain !important;
+  background-color: #fffdf5; border: 1px solid #cdb895; border-radius: 3px;
+  box-shadow: 0 6px 12px #00000066,0 0 8px #b3977166,0 0 18px #b397713d; color: #705640; font-size: 0.8rem;
+  transform-origin: 50% 50%; z-index: 0;
+}
+
+/* 글씨의 회전 중심을 사진 중심에 맞춰 함께 기울어지게 합니다.
+   카드 높이 460px / 글씨 시작 236px / 중심 160px → -76px */
+.vintage-grid-polaroid-text .captions > p {
+  align-self: end; width: auto; height: 66px; margin: 0 18px 18px; padding: 0;
+  color: #705640; font-size: 0.95rem; line-height: 1.5; text-align: center;
+  word-break: keep-all; overflow-wrap: anywhere; overflow: auto;
+  scrollbar-width: thin; scrollbar-color: #e88432 #eee2cf;
+  transform-origin: 50% -146px; z-index: 1;
+}
+
+/* 기울기와 열 위치 자동 반복 */
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(5n + 1) { --tilt: -2deg; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(5n + 2) { --tilt: 1.5deg; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(5n + 3) { --tilt: -1deg; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(5n + 4) { --tilt: 2deg; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(5n + 5) { --tilt: -0.5deg; }
+
+
+
+
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(odd) { --col: 1; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(even) { --col: 2; }
+
+/* 최대 50장의 사진·글씨 위치 */
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(1) { --row3: 1; --row2: 1; --row1: 1; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(2) { --row3: 1; --row2: 1; --row1: 2; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(3) { --row3: 1; --row2: 2; --row1: 3; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(4) { --row3: 2; --row2: 2; --row1: 4; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(5) { --row3: 2; --row2: 3; --row1: 5; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(6) { --row3: 2; --row2: 3; --row1: 6; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(7) { --row3: 3; --row2: 4; --row1: 7; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(8) { --row3: 3; --row2: 4; --row1: 8; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(9) { --row3: 3; --row2: 5; --row1: 9; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(10) { --row3: 4; --row2: 5; --row1: 10; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(11) { --row3: 4; --row2: 6; --row1: 11; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(12) { --row3: 4; --row2: 6; --row1: 12; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(13) { --row3: 5; --row2: 7; --row1: 13; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(14) { --row3: 5; --row2: 7; --row1: 14; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(15) { --row3: 5; --row2: 8; --row1: 15; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(16) { --row3: 6; --row2: 8; --row1: 16; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(17) { --row3: 6; --row2: 9; --row1: 17; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(18) { --row3: 6; --row2: 9; --row1: 18; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(19) { --row3: 7; --row2: 10; --row1: 19; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(20) { --row3: 7; --row2: 10; --row1: 20; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(21) { --row3: 7; --row2: 11; --row1: 21; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(22) { --row3: 8; --row2: 11; --row1: 22; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(23) { --row3: 8; --row2: 12; --row1: 23; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(24) { --row3: 8; --row2: 12; --row1: 24; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(25) { --row3: 9; --row2: 13; --row1: 25; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(26) { --row3: 9; --row2: 13; --row1: 26; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(27) { --row3: 9; --row2: 14; --row1: 27; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(28) { --row3: 10; --row2: 14; --row1: 28; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(29) { --row3: 10; --row2: 15; --row1: 29; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(30) { --row3: 10; --row2: 15; --row1: 30; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(31) { --row3: 11; --row2: 16; --row1: 31; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(32) { --row3: 11; --row2: 16; --row1: 32; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(33) { --row3: 11; --row2: 17; --row1: 33; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(34) { --row3: 12; --row2: 17; --row1: 34; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(35) { --row3: 12; --row2: 18; --row1: 35; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(36) { --row3: 12; --row2: 18; --row1: 36; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(37) { --row3: 13; --row2: 19; --row1: 37; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(38) { --row3: 13; --row2: 19; --row1: 38; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(39) { --row3: 13; --row2: 20; --row1: 39; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(40) { --row3: 14; --row2: 20; --row1: 40; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(41) { --row3: 14; --row2: 21; --row1: 41; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(42) { --row3: 14; --row2: 21; --row1: 42; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(43) { --row3: 15; --row2: 22; --row1: 43; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(44) { --row3: 15; --row2: 22; --row1: 44; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(45) { --row3: 15; --row2: 23; --row1: 45; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(46) { --row3: 16; --row2: 23; --row1: 46; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(47) { --row3: 16; --row2: 24; --row1: 47; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(48) { --row3: 16; --row2: 24; --row1: 48; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(49) { --row3: 17; --row2: 25; --row1: 49; }
+.vintage-grid-polaroid-text .batch-grid > div > :nth-child(50) { --row3: 17; --row2: 25; --row1: 50; }
+
+.vintage-grid-polaroid-text .album-footer { margin-top: 45px; padding-top: 18px; border-top: 1px dashed #cdb895; color: #93785e; text-align: right; font-size: 0.85rem; line-height: 1.6; }
+@media (max-width: 900px) {
+  .vintage-grid-polaroid-text .batch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .vintage-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row2); }
+  .vintage-grid-polaroid-text .batch-grid > div > :nth-child(odd) { --col: 1; }
+  .vintage-grid-polaroid-text .batch-grid > div > :nth-child(even) { --col: 2; }
+}
+@media (max-width: 600px) {
+  .vintage-grid-polaroid-text { padding: 55px 24px 30px; }
+  .vintage-grid-polaroid-text .batch-grid { grid-template-columns: minmax(0, 1fr); }
+  .vintage-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row1); grid-column: 1; }
+}
+
+/* 업로드 편집기가 추가한 p도 사진 한 칸으로 처리합니다. */
+.vintage-grid-polaroid-text .photos > p {
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    height: 460px !important; margin: 0 !important; padding: 0 !important;
+    line-height: 0; overflow: visible;
+}
+.vintage-grid-polaroid-text .photos > p { transform-origin: 50% 50%; z-index: 0; }
+/* 배경 애니메이션 시작 */
+.vintage-grid-polaroid-text .vintage-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.vintage-grid-polaroid-text .vintage-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.vintage-grid-polaroid-text .vintage-anim::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 254px 235px, #a0806059 0.8px, transparent 1.6px), radial-gradient(circle at 17px 25px, #8d6e5070 1.6px, transparent 2.4px), radial-gradient(circle at 96px 89px, #8d6e5070 1.0px, transparent 1.8px), radial-gradient(circle at 210px 78px, #6d4c3c4d 1.0px, transparent 1.8px), radial-gradient(circle at 103px 243px, #6d4c3c4d 1.4px, transparent 2.2px), radial-gradient(circle at 117px 228px, #8d6e5070 1.6px, transparent 2.4px), radial-gradient(circle at 15px 10px, #a0806059 1.6px, transparent 2.4px), radial-gradient(circle at 178px 197px, #8d6e5070 1.2px, transparent 2.0px), radial-gradient(circle at 281px 162px, #6d4c3c4d 1.1px, transparent 1.9px), radial-gradient(circle at 164px 225px, #6d4c3c4d 0.9px, transparent 1.7px), radial-gradient(circle at 208px 321px, #8d6e5070 1.2px, transparent 2.0px), radial-gradient(circle at 291px 65px, #a0806059 0.7px, transparent 1.5px), radial-gradient(circle at 96px 336px, #8d6e5070 1.1px, transparent 1.9px), radial-gradient(circle at 336px 62px, #6d4c3c4d 1.1px, transparent 1.9px), radial-gradient(circle at 219px 75px, #a0806059 1.6px, transparent 2.4px), radial-gradient(circle at 131px 50px, #8d6e5070 1.0px, transparent 1.8px), radial-gradient(circle at 54px 315px, #6d4c3c4d 1.1px, transparent 1.9px), radial-gradient(circle at 35px 93px, #a0806059 0.9px, transparent 1.7px), radial-gradient(circle at 138px 163px, #a0806059 1.3px, transparent 2.1px), radial-gradient(circle at 254px 82px, #a0806059 1.2px, transparent 2.0px), radial-gradient(circle at 324px 297px, #6d4c3c4d 0.9px, transparent 1.7px), radial-gradient(circle at 328px 152px, #8d6e5070 1.2px, transparent 2.0px), radial-gradient(circle at 258px 222px, #a0806059 1.1px, transparent 1.9px), radial-gradient(circle at 376px 53px, #a0806059 1.5px, transparent 2.3px), radial-gradient(circle at 57px 302px, #8d6e5070 1.3px, transparent 2.1px), radial-gradient(circle at 30px 245px, #6d4c3c4d 0.9px, transparent 1.7px); background-size: 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px;
+    animation: vt-drift 60s linear infinite; }
+.vintage-grid-polaroid-text .vintage-anim::after { content: ""; position: absolute; inset: 0; background: #fff4dc; opacity: 0; animation: vt-flicker 7s steps(1, end) infinite; }
+@keyframes vt-drift { from { background-position: 0 0; } to { background-position: 380px -340px; } }
+@keyframes vt-flicker { 0% { opacity: 0; } 4% { opacity: .07; } 6% { opacity: 0; } 48% { opacity: .05; } 50% { opacity: 0; } 77% { opacity: .06; } 78% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .vintage-grid-polaroid-text .vintage-anim::before, .vintage-grid-polaroid-text .vintage-anim::after { animation: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="vintage-grid-polaroid-text">
+    <div class="vintage-anim" aria-hidden="true">&#8203;</div>
+  <!-- ✏️ 1. 제목과 소제목 -->
+  <div class="album-heading">
+    <h2>제목</h2>
+    <p>소제목</p>
+  </div>
+
+  <div class="batch-grid">
+    <!-- ✏️ 2. 글씨는 여기에 한꺼번에 입력하세요.
+         사진만 쓰려면 captions 묶음을 통째로 지우세요.
+         특정 사진만 글씨를 비우려면 <p></p>를 남겨 순서를 맞추세요. -->
+    <div class="captions">
+      <p>첫 번째 사진에 하고 싶은 말</p>
+      <p>두 번째 사진에 하고 싶은 말</p>
+      <p>세 번째 사진에 하고 싶은 말</p>
+      <p>네 번째 사진에 하고 싶은 말</p>
+      <p>다섯 번째 사진에 하고 싶은 말</p>
+      <p>여섯 번째 사진에 하고 싶은 말</p>
+    </div>
+
+    <!-- ✏️ 3. 사진은 여기에 한꺼번에 입력하세요. 최대 50장.
+         img 한 줄이 폴라로이드 한 장입니다. -->
+    <div class="photos">
+      <img src="이미지링크1" alt="사진1">
+      <img src="이미지링크2" alt="사진2">
+      <img src="이미지링크3" alt="사진3">
+      <img src="이미지링크4" alt="사진4">
+      <img src="이미지링크5" alt="사진5">
+      <img src="이미지링크6" alt="사진6">
+    </div>
+  </div>
+
+  <!-- ✏️ 4. 날짜 또는 서명 -->
+  <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

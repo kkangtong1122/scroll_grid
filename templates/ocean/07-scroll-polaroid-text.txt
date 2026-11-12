@@ -1,0 +1,219 @@
+<style>
+.ocean-scroll-polaroid-text {
+    --w: 280px;
+    position: relative; isolation: isolate; box-sizing: border-box;
+    max-width: 950px; min-width: 0; margin: 20px auto; padding: 44px 0 34px; overflow: hidden;
+    
+    border: 1px solid #b3d7dd; border-radius: 18px;
+    box-shadow: 0 0 24px #66b5c740,inset 0 0 35px #66b5c726;
+    font-family: 'Malgun Gothic','Apple SD Gothic Neo',sans-serif;
+
+    background-color: #eff9fa; background-image: repeating-linear-gradient(0deg, transparent 0 27px, #75b4c229 27px 28px); background-size: 100% 100%;
+}
+.ocean-scroll-polaroid-text .gallery-title {
+    margin: 0; padding: 0 22px; color: #2c697e; font-size: 1.2rem;
+    line-height: 1.5; text-align: center; overflow-wrap: anywhere;
+    text-shadow: none;
+}
+.ocean-scroll-polaroid-text .gallery-title::before { content: '≈ '; color: #608997; }
+.ocean-scroll-polaroid-text .gallery-title::after { content: ' ≈'; color: #608997; }
+.ocean-scroll-polaroid-text .gallery-window { margin: 0 34px; overflow: hidden; }
+.ocean-scroll-polaroid-text .scroll-container {
+    display: flex; flex-wrap: nowrap; align-items: center; gap: 28px; min-width: 0;
+    padding: 32px 20px; overflow-x: auto; overflow-y: hidden;
+    scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;
+}
+.ocean-scroll-polaroid-text .scroll-container::-webkit-scrollbar { display: none; }
+/* p 묶음과 이미지 모두 축소 방지 */
+.ocean-scroll-polaroid-text .scroll-container > p,
+.ocean-scroll-polaroid-text .scroll-container img {
+    flex: 0 0 var(--w) !important;
+    width: var(--w) !important; min-width: var(--w) !important; max-width: var(--w) !important;
+    margin: 0 !important; padding: 0 !important;
+}
+.ocean-scroll-polaroid-text .scroll-container > p { line-height: 0; }
+.ocean-scroll-polaroid-text .scroll-container img {
+    position: relative; display: block !important; height: auto !important; box-sizing: border-box;
+    padding: 10px 10px 38px !important;
+    border: 1px solid #b3d7dd; border-radius: 3px; background: #ffffff; color: #426f7c;
+    box-shadow: 0 7px 12px #00000080,0 0 8px #66b5c780,0 0 20px #66b5c74d;
+    transform: rotate(var(--tilt,-2deg)); transition: transform .25s,box-shadow .25s;
+}
+.ocean-scroll-polaroid-text .scroll-container:focus-visible { outline: 2px solid #b3d7dd; outline-offset: -3px; }
+.ocean-scroll-polaroid-text .frame-sticker {
+    position: absolute; display: block; width: 30px; margin: 0; padding: 0;
+    font-size: 25px; line-height: 1.2; text-align: center; pointer-events: none;
+    user-select: none; z-index: 2; filter: drop-shadow(1px 2px 1px #00000020);
+}
+.ocean-scroll-polaroid-text .sticker-top-left { top: 10px; left: 16px; transform: rotate(-16deg); }
+.ocean-scroll-polaroid-text .sticker-top-right { top: 10px; right: 16px; transform: rotate(16deg); }
+.ocean-scroll-polaroid-text .sticker-side-left { top: 57%; left: 4px; width: 24px; font-size: 20px; transform: rotate(-12deg); }
+.ocean-scroll-polaroid-text .sticker-side-right { top: 57%; right: 4px; width: 24px; font-size: 20px; transform: rotate(12deg); }
+.ocean-scroll-polaroid-text .sticker-bottom-left { bottom: 6px; left: 15px; transform: rotate(-12deg); }
+.ocean-scroll-polaroid-text .sticker-bottom-right { bottom: 6px; right: 15px; transform: rotate(12deg); }
+.ocean-scroll-polaroid-text .emoji-garland {
+    margin: 9px 34px 0; padding: 0; font-size: 16px; line-height: 1.5; text-align: center;
+    letter-spacing: .22em; pointer-events: none; user-select: none;
+}
+@media (hover: hover) {
+    .ocean-scroll-polaroid-text .scroll-container img:hover { transform: rotate(0deg) translateY(-3px); box-shadow: 0 9px 14px #00000080,0 0 10px #66b5c7b3,0 0 24px #66b5c766; z-index: 1; }
+}
+@media (max-width: 600px) { .ocean-scroll-polaroid-text { --w: 240px; } }
+@media (prefers-reduced-motion: reduce) {
+    .ocean-scroll-polaroid-text .scroll-container { scroll-behavior: auto; }
+    .ocean-scroll-polaroid-text .scroll-container img { transition: none; }
+    .ocean-scroll-polaroid-text .scroll-container img:hover { transform: rotate(var(--tilt,-2deg)); }
+}
+.ocean-scroll-polaroid-text .scroll-container > :nth-child(4n+1) { --tilt: -2deg; }
+.ocean-scroll-polaroid-text .scroll-container > :nth-child(4n+2) { --tilt: 1.5deg; }
+.ocean-scroll-polaroid-text .scroll-container > :nth-child(4n+3) { --tilt: -1deg; }
+.ocean-scroll-polaroid-text .scroll-container > :nth-child(4n+4) { --tilt: 2deg; }
+.ocean-scroll-polaroid-text .gallery-subtitle { margin: 6px 0 0; padding: 0 22px; color: #608997; font-size: .88rem; line-height: 1.6; text-align: center; overflow-wrap: anywhere; }
+.ocean-scroll-polaroid-text .album-footer { margin: 24px 34px 0; padding-top: 14px; border-top: 1px dashed #b3d7dd; color: #608997; text-align: right; font-size: .85rem; line-height: 1.6; overflow-wrap: anywhere; }
+/* 배경 애니메이션 시작 */
+.ocean-scroll-polaroid-text .ocean-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.ocean-scroll-polaroid-text .ocean-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.ocean-scroll-polaroid-text .ocean-anim::before, .ocean-scroll-polaroid-text .ocean-anim::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; }
+.ocean-scroll-polaroid-text .ocean-anim::before { height: 26px; background: radial-gradient(circle at 50% 100%, #66b5c740 15px, transparent 16px) 0 100% / 44px 26px repeat-x;
+    animation: oc-wave 4s linear infinite; }
+.ocean-scroll-polaroid-text .ocean-anim::after { height: 18px; background: radial-gradient(circle at 50% 100%, #9fd6e159 11px, transparent 12px) 0 100% / 32px 18px repeat-x;
+    animation: oc-wave2 6s linear infinite; }
+.ocean-scroll-polaroid-text .ocean-anim span { width: 3px; height: 3px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 6px #ffffff; opacity: 0; animation: oc-glint 3.6s ease-in-out infinite; }
+.ocean-scroll-polaroid-text .ocean-anim span:nth-child(1) { left: 12%; bottom: 34px; animation-delay: 0s; }
+.ocean-scroll-polaroid-text .ocean-anim span:nth-child(2) { left: 37%; bottom: 46px; animation-delay: 1.1s; }
+.ocean-scroll-polaroid-text .ocean-anim span:nth-child(3) { left: 58%; bottom: 30px; animation-delay: 2.3s; }
+.ocean-scroll-polaroid-text .ocean-anim span:nth-child(4) { left: 81%; bottom: 42px; animation-delay: 0.6s; }
+.ocean-scroll-polaroid-text .ocean-anim span:nth-child(5) { left: 69%; bottom: 58px; animation-delay: 1.8s; }
+@keyframes oc-wave { from { background-position: 0 100%; } to { background-position: 44px 100%; } }
+@keyframes oc-wave2 { from { background-position: 0 100%; } to { background-position: -32px 100%; } }
+@keyframes oc-glint { 0%, 100% { opacity: 0; transform: scale(.4); } 50% { opacity: .9; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .ocean-scroll-polaroid-text .ocean-anim::before, .ocean-scroll-polaroid-text .ocean-anim::after { animation: none; } .ocean-scroll-polaroid-text .ocean-anim span { display: none; } }
+/* 배경 애니메이션 끝 */
+
+/* ===== 사진+글씨 스크롤: 사진과 같은 순서의 글씨를 폴라로이드 아래 흰 여백에 겹칩니다. 최대 50장. ===== */
+.ocean-scroll-polaroid-text .scroll-container.with-captions {
+    --h: 380px;
+    display: grid !important; grid-auto-flow: column; grid-auto-columns: var(--w);
+    grid-template-rows: auto; align-items: stretch; justify-content: start;
+}
+.ocean-scroll-polaroid-text .scroll-container.with-captions > .captions, .ocean-scroll-polaroid-text .scroll-container.with-captions > .photos-in, .ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > p { display: contents !important; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > p > br { display: none; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in img {
+    grid-row: 1; grid-column: var(--col);
+    width: var(--w) !important; min-width: 0 !important; max-width: var(--w) !important;
+    height: var(--h) !important; padding-bottom: 78px !important;
+    object-fit: contain; flex: none !important; margin: 0 !important;
+}
+.ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > p {
+    position: relative; z-index: 2; grid-row: 1; grid-column: var(--col); align-self: end;
+    display: flex; align-items: center; justify-content: center; box-sizing: border-box;
+    height: 66px; margin: 0 16px 8px !important; padding: 0 !important;
+    color: #426f7c; font-size: .92rem; line-height: 1.45; text-align: center;
+    word-break: keep-all; overflow-wrap: anywhere; overflow: auto; transform: rotate(var(--tilt, 0deg));
+}
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(1), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(1) { --col: 1; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(2), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(2) { --col: 2; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(3), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(3) { --col: 3; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(4), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(4) { --col: 4; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(5), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(5) { --col: 5; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(6), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(6) { --col: 6; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(7), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(7) { --col: 7; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(8), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(8) { --col: 8; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(9), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(9) { --col: 9; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(10), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(10) { --col: 10; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(11), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(11) { --col: 11; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(12), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(12) { --col: 12; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(13), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(13) { --col: 13; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(14), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(14) { --col: 14; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(15), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(15) { --col: 15; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(16), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(16) { --col: 16; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(17), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(17) { --col: 17; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(18), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(18) { --col: 18; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(19), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(19) { --col: 19; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(20), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(20) { --col: 20; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(21), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(21) { --col: 21; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(22), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(22) { --col: 22; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(23), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(23) { --col: 23; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(24), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(24) { --col: 24; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(25), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(25) { --col: 25; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(26), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(26) { --col: 26; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(27), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(27) { --col: 27; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(28), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(28) { --col: 28; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(29), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(29) { --col: 29; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(30), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(30) { --col: 30; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(31), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(31) { --col: 31; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(32), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(32) { --col: 32; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(33), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(33) { --col: 33; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(34), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(34) { --col: 34; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(35), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(35) { --col: 35; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(36), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(36) { --col: 36; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(37), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(37) { --col: 37; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(38), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(38) { --col: 38; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(39), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(39) { --col: 39; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(40), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(40) { --col: 40; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(41), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(41) { --col: 41; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(42), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(42) { --col: 42; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(43), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(43) { --col: 43; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(44), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(44) { --col: 44; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(45), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(45) { --col: 45; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(46), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(46) { --col: 46; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(47), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(47) { --col: 47; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(48), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(48) { --col: 48; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(49), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(49) { --col: 49; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(50), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(50) { --col: 50; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(4n+1), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(4n+1) { --tilt: -2deg; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(4n+2), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(4n+2) { --tilt: 1.5deg; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(4n+3), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(4n+3) { --tilt: -1deg; }
+.ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in > :nth-child(4n+4), .ocean-scroll-polaroid-text .scroll-container.with-captions > .captions > :nth-child(4n+4) { --tilt: 2deg; }
+@media (hover: hover) { .ocean-scroll-polaroid-text .scroll-container.with-captions .photos-in img:hover { transform: rotate(var(--tilt, 0deg)); } }
+@media (max-width: 600px) { .ocean-scroll-polaroid-text .scroll-container.with-captions { --h: 330px; } }
+</style>
+
+<div class="ocean-scroll-polaroid-text">
+    <div class="ocean-anim" aria-hidden="true"><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span></div>
+    
+    <span class="frame-sticker sticker-top-left" aria-hidden="true">🐚</span>
+    <span class="frame-sticker sticker-top-right" aria-hidden="true">⛵</span>
+    <span class="frame-sticker sticker-side-left" aria-hidden="true">🫧</span>
+    <span class="frame-sticker sticker-side-right" aria-hidden="true">🐟</span>
+    <span class="frame-sticker sticker-bottom-left" aria-hidden="true">⚓</span>
+    <span class="frame-sticker sticker-bottom-right" aria-hidden="true">🪸</span>
+
+    
+    <h2 class="gallery-title">제목</h2>
+    <p class="gallery-subtitle">소제목</p>
+    <p class="emoji-garland" aria-hidden="true">🩵 🌊 🩵</p>
+
+    <div class="gallery-window">
+        <div class="scroll-container with-captions" tabindex="0" role="region" aria-label="좌우로 넘기는 사진 모음">
+            <!-- 글씨를 사진과 같은 순서로 넣으세요. 글씨를 비우려면 <p></p>를 남겨 순서를 맞추세요. -->
+            <div class="captions">
+                <p>1번째 사진에 하고 싶은 말</p>
+                <p>2번째 사진에 하고 싶은 말</p>
+                <p>3번째 사진에 하고 싶은 말</p>
+                <p>4번째 사진에 하고 싶은 말</p>
+                <p>5번째 사진에 하고 싶은 말</p>
+                <p>6번째 사진에 하고 싶은 말</p>
+                <p>7번째 사진에 하고 싶은 말</p>
+                <p>8번째 사진에 하고 싶은 말</p>
+                <p>9번째 사진에 하고 싶은 말</p>
+                <p>10번째 사진에 하고 싶은 말</p>
+            </div>
+            <!-- 사진을 같은 순서로 넣으세요. p 하나에는 사진 한 장만 넣습니다. -->
+            <div class="photos-in">
+                <img src="이미지링크1" alt="사진1">
+                <img src="이미지링크2" alt="사진2">
+                <img src="이미지링크3" alt="사진3">
+                <img src="이미지링크4" alt="사진4">
+                <img src="이미지링크5" alt="사진5">
+                <img src="이미지링크6" alt="사진6">
+                <img src="이미지링크7" alt="사진7">
+                <img src="이미지링크8" alt="사진8">
+                <img src="이미지링크9" alt="사진9">
+                <img src="이미지링크10" alt="사진10">
+            </div>
+        </div>
+    </div>
+
+    <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

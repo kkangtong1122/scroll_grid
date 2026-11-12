@@ -1,0 +1,166 @@
+<style>
+.cream-grid-polaroid-text {
+    --accent: #8d6e63; --paper: #fff; --glow: 141,110,99;
+    width: 100%; max-width: 900px; margin: 20px auto; padding: 40px;
+    box-sizing: border-box; min-width: 0; border: 1px solid #dcdcdc;
+    border-radius: 0; color: #5d4037;
+    background: #fffef8;
+    box-shadow: 5px 5px 15px #0000000d;
+    font-family: "Nanum Myeongjo", "Batang", serif;
+}
+.cream-grid-polaroid-text .album-heading { margin-bottom: 32px; text-align: center; }
+.cream-grid-polaroid-text .album-heading h2 {
+    display: inline-block; margin: 0; padding-bottom: 10px; color: inherit;
+    border-bottom: 2px dashed var(--accent); font-size: 1.8rem;
+}
+.cream-grid-polaroid-text .album-heading p { margin: 12px 0 0; color: #77685b; }
+.cream-grid-polaroid-text .batch-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px; isolation: isolate;
+}
+.cream-grid-polaroid-text .captions, .cream-grid-polaroid-text .photos { display: contents; }
+.cream-grid-polaroid-text .batch-grid > div > * {
+    grid-row: var(--row); grid-column: var(--col);
+    min-width: 0; box-sizing: border-box;
+}
+/* 사진을 직접 넣거나, 업로드된 <p><img></p>를 넣어도 적용됩니다. */
+.cream-grid-polaroid-text .photos > img, .cream-grid-polaroid-text .photos > p {
+    position: relative; display: block !important;
+    width: 100% !important; max-width: 100% !important; height: 450px !important;
+    margin: 0 !important; padding: 12px 12px 88px !important;
+    background: var(--paper); border: 1px solid #e9e5df; border-radius: 3px;
+    box-shadow: 2px 5px 10px #00000026, 0 0 18px rgba(var(--glow), .25);
+    object-fit: contain; line-height: 0; overflow: hidden; z-index: 0;
+    transition: box-shadow .25s;
+}
+.cream-grid-polaroid-text .photos > p img {
+    display: block !important; box-sizing: border-box !important;
+    width: 100% !important; max-width: 100% !important; height: 100% !important;
+    margin: 0 !important; padding: 0 !important; border: 0 !important;
+    object-fit: contain; box-shadow: none; border-radius: 0;
+}
+.cream-grid-polaroid-text .photos > p > br { display: none; }
+/* 사진과 같은 번호의 글씨를 카드 아래 흰 여백에 겹칩니다. */
+.cream-grid-polaroid-text .captions > p {
+    position: relative; align-self: end; display: flex; align-items: center;
+    justify-content: center; height: 66px; margin: 0 18px 12px; padding: 0;
+    color: #555; font-size: .95rem; line-height: 1.5; text-align: center;
+    word-break: keep-all; overflow-wrap: anywhere; overflow: auto; z-index: 1;
+}
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(odd) { --col: 1; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(even) { --col: 2; }
+/* 최대 50장: 사진과 글씨의 순서를 맞추세요. */
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(1) { --row: 1; --order: 1; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(2) { --row: 1; --order: 2; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(3) { --row: 2; --order: 3; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(4) { --row: 2; --order: 4; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(5) { --row: 3; --order: 5; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(6) { --row: 3; --order: 6; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(7) { --row: 4; --order: 7; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(8) { --row: 4; --order: 8; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(9) { --row: 5; --order: 9; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(10) { --row: 5; --order: 10; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(11) { --row: 6; --order: 11; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(12) { --row: 6; --order: 12; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(13) { --row: 7; --order: 13; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(14) { --row: 7; --order: 14; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(15) { --row: 8; --order: 15; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(16) { --row: 8; --order: 16; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(17) { --row: 9; --order: 17; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(18) { --row: 9; --order: 18; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(19) { --row: 10; --order: 19; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(20) { --row: 10; --order: 20; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(21) { --row: 11; --order: 21; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(22) { --row: 11; --order: 22; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(23) { --row: 12; --order: 23; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(24) { --row: 12; --order: 24; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(25) { --row: 13; --order: 25; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(26) { --row: 13; --order: 26; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(27) { --row: 14; --order: 27; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(28) { --row: 14; --order: 28; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(29) { --row: 15; --order: 29; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(30) { --row: 15; --order: 30; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(31) { --row: 16; --order: 31; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(32) { --row: 16; --order: 32; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(33) { --row: 17; --order: 33; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(34) { --row: 17; --order: 34; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(35) { --row: 18; --order: 35; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(36) { --row: 18; --order: 36; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(37) { --row: 19; --order: 37; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(38) { --row: 19; --order: 38; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(39) { --row: 20; --order: 39; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(40) { --row: 20; --order: 40; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(41) { --row: 21; --order: 41; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(42) { --row: 21; --order: 42; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(43) { --row: 22; --order: 43; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(44) { --row: 22; --order: 44; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(45) { --row: 23; --order: 45; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(46) { --row: 23; --order: 46; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(47) { --row: 24; --order: 47; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(48) { --row: 24; --order: 48; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(49) { --row: 25; --order: 49; }
+.cream-grid-polaroid-text .batch-grid > div > :nth-child(50) { --row: 25; --order: 50; }
+.cream-grid-polaroid-text .album-footer { margin-top: 30px; color: #77685b; text-align: right; font-size: .9rem; }
+@media (hover: hover) {
+    .cream-grid-polaroid-text .photos > :hover { box-shadow: 0 8px 18px #00000030, 0 0 26px rgba(var(--glow), .4); }
+}
+@media (max-width: 600px) {
+    .cream-grid-polaroid-text { padding: 28px 20px; }
+    .cream-grid-polaroid-text .batch-grid { grid-template-columns: minmax(0, 1fr); }
+    .cream-grid-polaroid-text .batch-grid > div > * { grid-row: var(--order); grid-column: 1; }
+    .cream-grid-polaroid-text .photos > img, .cream-grid-polaroid-text .photos > p { height: 420px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .cream-grid-polaroid-text .photos > img, .cream-grid-polaroid-text .photos > p { transition: none; }
+}
+.cream-grid-polaroid-text { position: relative; isolation: isolate; }
+.cream-grid-polaroid-text::before, .cream-grid-polaroid-text::after { position: absolute; top: 12px; z-index: 2; font-size: 2rem; line-height: 1; pointer-events: none; }
+.cream-grid-polaroid-text::before { content: '📷'; left: 12px; transform: rotate(-14deg); }
+.cream-grid-polaroid-text::after { content: '🤎'; right: 12px; transform: rotate(14deg); }
+/* 배경 애니메이션 시작 */
+.cream-grid-polaroid-text .cream-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.cream-grid-polaroid-text .cream-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.cream-grid-polaroid-text .cream-anim::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 199px 439px, #e8d3b14d, transparent 63px), radial-gradient(circle at 588px 22px, #e8d3b14d, transparent 75px), radial-gradient(circle at 16px 278px, #e8d3b14d, transparent 63px), radial-gradient(circle at 72px 448px, #dcc3a040, transparent 70px), radial-gradient(circle at 115px 322px, #efdcc066, transparent 55px), radial-gradient(circle at 187px 258px, #efdcc066, transparent 88px), radial-gradient(circle at 548px 192px, #e8d3b14d, transparent 51px), radial-gradient(circle at 240px 582px, #e8d3b14d, transparent 74px), radial-gradient(circle at 66px 143px, #e8d3b14d, transparent 46px); background-size: 760px 640px, 760px 640px, 760px 640px, 760px 640px, 760px 640px, 760px 640px, 760px 640px, 760px 640px, 760px 640px;
+    animation: cr-drift 70s linear infinite; }
+.cream-grid-polaroid-text .cream-anim::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 199px 276px, #d8b88fb3 1.4px, transparent 2.2px), radial-gradient(circle at 49px 339px, #c9a57acc 1.1px, transparent 1.9px), radial-gradient(circle at 295px 248px, #c9a57acc 1.2px, transparent 2.0px), radial-gradient(circle at 336px 224px, #c9a57acc 0.8px, transparent 1.6px), radial-gradient(circle at 164px 45px, #d8b88fb3 1.1px, transparent 1.9px), radial-gradient(circle at 196px 241px, #c9a57acc 1.3px, transparent 2.1px), radial-gradient(circle at 413px 216px, #d8b88fb3 0.9px, transparent 1.7px), radial-gradient(circle at 478px 155px, #d8b88fb3 0.9px, transparent 1.7px), radial-gradient(circle at 273px 202px, #c9a57acc 1.3px, transparent 2.1px), radial-gradient(circle at 433px 39px, #d8b88fb3 1.0px, transparent 1.8px), radial-gradient(circle at 6px 446px, #c9a57acc 1.1px, transparent 1.9px), radial-gradient(circle at 353px 407px, #d8b88fb3 0.8px, transparent 1.6px), radial-gradient(circle at 9px 134px, #c9a57acc 1.1px, transparent 1.9px), radial-gradient(circle at 35px 221px, #c9a57acc 0.9px, transparent 1.7px); background-size: 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px, 520px 460px;
+    animation: cr-twinkle 3.4s ease-in-out infinite alternate; }
+@keyframes cr-drift { from { background-position: 0 0; } to { background-position: 760px 640px; } }
+@keyframes cr-twinkle { from { opacity: .15; } to { opacity: .9; } }
+@media (prefers-reduced-motion: reduce) { .cream-grid-polaroid-text .cream-anim::before, .cream-grid-polaroid-text .cream-anim::after { animation: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="cream-grid-polaroid-text">
+    <div class="cream-anim" aria-hidden="true">&#8203;</div>
+    <div class="album-heading">
+        <h2>제목</h2>
+        <p>소제목</p>
+    </div>
+    <div class="batch-grid">
+        <!-- 글씨를 순서대로 입력하세요. -->
+        <div class="captions">
+            <p>1번째 사진에 하고 싶은 말</p>
+            <p>2번째 사진에 하고 싶은 말</p>
+            <p>3번째 사진에 하고 싶은 말</p>
+            <p>4번째 사진에 하고 싶은 말</p>
+            <p>5번째 사진에 하고 싶은 말</p>
+            <p>6번째 사진에 하고 싶은 말</p>
+            <p>7번째 사진에 하고 싶은 말</p>
+            <p>8번째 사진에 하고 싶은 말</p>
+            <p>9번째 사진에 하고 싶은 말</p>
+        </div>
+        <!-- 사진을 같은 순서로 넣으세요. p 하나에는 사진 한 장만 넣습니다. -->
+        <div class="photos">
+            <img src="이미지링크1" alt="사진1">
+            <img src="이미지링크2" alt="사진2">
+            <img src="이미지링크3" alt="사진3">
+            <img src="이미지링크4" alt="사진4">
+            <img src="이미지링크5" alt="사진5">
+            <img src="이미지링크6" alt="사진6">
+            <img src="이미지링크7" alt="사진7">
+            <img src="이미지링크8" alt="사진8">
+            <img src="이미지링크9" alt="사진9">
+        </div>
+    </div>
+    <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

@@ -1,0 +1,85 @@
+<style>
+.vintage-grid-plain {
+  width: 100%; max-width: 1100px; margin: 30px auto; padding: 55px 35px 35px;
+  box-sizing: border-box; position: relative; isolation: isolate;
+   
+   border: 2px solid #cdb895; border-radius: 16px;
+  box-shadow: 0 0 24px #b3977140, inset 0 0 35px #b3977126; font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+
+    background-color: #f4ebd9; background-image: radial-gradient(#75552d1f 0.6px, transparent 0.8px), linear-gradient(115deg, #ffffff59, transparent 55%, #a7804812); background-size: 7px 7px, 100% 100%;
+}
+.vintage-grid-plain *, .vintage-grid-plain *::before, .vintage-grid-plain *::after { box-sizing: border-box; }
+.vintage-grid-plain::before, .vintage-grid-plain::after { position: absolute; top: 12px; font-size: 2.5rem; line-height: 1; pointer-events: none; }
+.vintage-grid-plain::before { content: '🧸'; left: 10px; transform: rotate(-18deg); }
+.vintage-grid-plain::after { content: '✉️'; right: 10px; transform: rotate(18deg); }
+.vintage-grid-plain .album-heading { position: relative; margin-bottom: 45px; text-align: center; color: #674733; }
+.vintage-grid-plain .album-heading::before { content: 'THE LITTLE ARCHIVE'; display: block; margin-bottom: 14px; color: #93785e; font: 0.65rem Georgia, serif; letter-spacing: 0.16em; }
+.vintage-grid-plain .album-heading::after { content: '—  ❦  —'; display: block; margin-top: 18px; letter-spacing: 0.25em; }
+.vintage-grid-plain .album-heading h2 { display: inline-block; max-width: 100%; margin: 0; padding-bottom: 10px; color: #674733; border-bottom: 2px dashed #cdb895; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.4; overflow-wrap: anywhere; text-shadow: none; }
+.vintage-grid-plain .album-heading p { margin: 15px 0 0; color: #93785e; font-size: 0.9rem; line-height: 1.6; }
+
+.vintage-grid-plain .photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 40px 32px; isolation: isolate; }
+
+.vintage-grid-plain .photo-grid img { min-width: 0; position: relative; transform: none; }
+
+.vintage-grid-plain .photo-grid img {
+  display: block !important; box-sizing: border-box !important;
+  width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+  height: auto !important; margin: 0 !important;
+  padding: 0 !important; object-fit: contain !important;
+  background-color: #f4ebd9; border: 1px solid #b397714d; border-radius: 18px;
+  box-shadow: 0 6px 12px #00000066,0 0 8px #b3977166,0 0 18px #b397713d; color: #705640; font-size: 0.8rem;
+  transform-origin: 50% 50%; z-index: 0;
+}
+
+
+.vintage-grid-plain .album-footer { margin-top: 45px; padding-top: 18px; border-top: 1px dashed #cdb895; color: #93785e; text-align: right; font-size: 0.85rem; line-height: 1.6; }
+@media (max-width: 900px) {
+  .vintage-grid-plain .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+}
+@media (max-width: 600px) {
+  .vintage-grid-plain { padding: 55px 24px 30px; }
+  .vintage-grid-plain .photo-grid { grid-template-columns: minmax(0, 1fr); }
+
+}
+
+/* 업로드 편집기가 추가한 p도 사진 한 칸으로 처리합니다. */
+.vintage-grid-plain .photo-grid > p {
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    height: auto !important; margin: 0 !important; padding: 0 !important;
+    line-height: 0; overflow: visible; align-self: start;
+}
+/* 배경 애니메이션 시작 */
+.vintage-grid-plain .vintage-anim { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.vintage-grid-plain .vintage-anim span { position: absolute; display: block; font-size: 0; line-height: 0; color: transparent; overflow: hidden; }
+.vintage-grid-plain .vintage-anim::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 254px 235px, #a0806059 0.8px, transparent 1.6px), radial-gradient(circle at 17px 25px, #8d6e5070 1.6px, transparent 2.4px), radial-gradient(circle at 96px 89px, #8d6e5070 1.0px, transparent 1.8px), radial-gradient(circle at 210px 78px, #6d4c3c4d 1.0px, transparent 1.8px), radial-gradient(circle at 103px 243px, #6d4c3c4d 1.4px, transparent 2.2px), radial-gradient(circle at 117px 228px, #8d6e5070 1.6px, transparent 2.4px), radial-gradient(circle at 15px 10px, #a0806059 1.6px, transparent 2.4px), radial-gradient(circle at 178px 197px, #8d6e5070 1.2px, transparent 2.0px), radial-gradient(circle at 281px 162px, #6d4c3c4d 1.1px, transparent 1.9px), radial-gradient(circle at 164px 225px, #6d4c3c4d 0.9px, transparent 1.7px), radial-gradient(circle at 208px 321px, #8d6e5070 1.2px, transparent 2.0px), radial-gradient(circle at 291px 65px, #a0806059 0.7px, transparent 1.5px), radial-gradient(circle at 96px 336px, #8d6e5070 1.1px, transparent 1.9px), radial-gradient(circle at 336px 62px, #6d4c3c4d 1.1px, transparent 1.9px), radial-gradient(circle at 219px 75px, #a0806059 1.6px, transparent 2.4px), radial-gradient(circle at 131px 50px, #8d6e5070 1.0px, transparent 1.8px), radial-gradient(circle at 54px 315px, #6d4c3c4d 1.1px, transparent 1.9px), radial-gradient(circle at 35px 93px, #a0806059 0.9px, transparent 1.7px), radial-gradient(circle at 138px 163px, #a0806059 1.3px, transparent 2.1px), radial-gradient(circle at 254px 82px, #a0806059 1.2px, transparent 2.0px), radial-gradient(circle at 324px 297px, #6d4c3c4d 0.9px, transparent 1.7px), radial-gradient(circle at 328px 152px, #8d6e5070 1.2px, transparent 2.0px), radial-gradient(circle at 258px 222px, #a0806059 1.1px, transparent 1.9px), radial-gradient(circle at 376px 53px, #a0806059 1.5px, transparent 2.3px), radial-gradient(circle at 57px 302px, #8d6e5070 1.3px, transparent 2.1px), radial-gradient(circle at 30px 245px, #6d4c3c4d 0.9px, transparent 1.7px); background-size: 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px, 380px 340px;
+    animation: vt-drift 60s linear infinite; }
+.vintage-grid-plain .vintage-anim::after { content: ""; position: absolute; inset: 0; background: #fff4dc; opacity: 0; animation: vt-flicker 7s steps(1, end) infinite; }
+@keyframes vt-drift { from { background-position: 0 0; } to { background-position: 380px -340px; } }
+@keyframes vt-flicker { 0% { opacity: 0; } 4% { opacity: .07; } 6% { opacity: 0; } 48% { opacity: .05; } 50% { opacity: 0; } 77% { opacity: .06; } 78% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .vintage-grid-plain .vintage-anim::before, .vintage-grid-plain .vintage-anim::after { animation: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="vintage-grid-plain">
+    <div class="vintage-anim" aria-hidden="true">&#8203;</div>
+  <!-- ✏️ 1. 제목과 소제목 -->
+  <div class="album-heading">
+    <h2>제목</h2>
+    <p>소제목</p>
+  </div>
+
+  <!-- ✏️ 2. 이곳에 사진 코드를 한꺼번에 넣으세요. -->
+  <div class="photo-grid">
+    <img src="이미지링크1" alt="사진1">
+    <img src="이미지링크2" alt="사진2">
+    <img src="이미지링크3" alt="사진3">
+    <img src="이미지링크4" alt="사진4">
+    <img src="이미지링크5" alt="사진5">
+    <img src="이미지링크6" alt="사진6">
+  </div>
+
+  <!-- ✏️ 3. 날짜 또는 서명 -->
+  <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>

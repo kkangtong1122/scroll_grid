@@ -1,0 +1,195 @@
+<style>
+/* 별빛 야간 — 사진은 img만, 글씨는 p만 순서대로 넣으세요. */
+.night-grid-polaroid-text {
+  width: 100%; max-width: 1100px; margin: 30px auto; padding: 55px 35px 35px;
+  box-sizing: border-box; position: relative; isolation: isolate;
+   
+   border: 2px solid #4d506c; border-radius: 16px;
+  box-shadow: 0 0 24px #d2bb7e40, inset 0 0 35px #d2bb7e26; font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+
+    background-color: #171a2c; background-image: radial-gradient(circle at 463px 476px, #dadeff73 0.8px, transparent 1.6px), radial-gradient(circle at 189px 524px, #dadeff73 0.8px, transparent 1.6px), radial-gradient(circle at 96px 457px, #f5e2b099 0.7px, transparent 1.5px), radial-gradient(circle at 551px 42px, #f5e2b066 0.9px, transparent 1.7px), radial-gradient(circle at 463px 161px, #f5e2b099 0.9px, transparent 1.7px), radial-gradient(circle at 60px 36px, #dadeff73 0.6px, transparent 1.4px), radial-gradient(circle at 614px 30px, #ffffff66 1.0px, transparent 1.8px), radial-gradient(circle at 451px 200px, #ffffff66 0.8px, transparent 1.6px), radial-gradient(circle at 511px 4px, #f5e2b066 0.9px, transparent 1.7px), radial-gradient(circle at 284px 416px, #f5e2b099 1.1px, transparent 1.9px), radial-gradient(circle at 260px 322px, #ffffff66 1.0px, transparent 1.8px), radial-gradient(circle at 30px 71px, #f5e2b099 0.8px, transparent 1.6px), radial-gradient(circle at 410px 110px, #f5e2b066 1.0px, transparent 1.8px), radial-gradient(circle at 68px 17px, #f5e2b099 1.0px, transparent 1.8px), radial-gradient(circle at 218px 214px, #f5e2b099 1.1px, transparent 1.9px), radial-gradient(circle at 481px 384px, #f5e2b066 1.1px, transparent 1.9px), radial-gradient(circle at 429px 74px, #dadeff73 0.8px, transparent 1.6px), radial-gradient(circle at 276px 344px, #ffffff66 0.6px, transparent 1.4px), radial-gradient(circle at 15px 419px, #f5e2b099 1.0px, transparent 1.8px), radial-gradient(circle at 137px 252px, #f5e2b099 0.9px, transparent 1.7px), radial-gradient(circle at 61px 476px, #dadeff73 1.0px, transparent 1.8px), radial-gradient(circle at 572px 192px, #dadeff73 0.8px, transparent 1.6px), radial-gradient(circle at 134px 429px, #f5e2b099 0.9px, transparent 1.7px), radial-gradient(circle at 404px 430px, #f5e2b099 1.1px, transparent 1.9px), radial-gradient(circle at 276px 311px, #f5e2b099 1.1px, transparent 1.9px), radial-gradient(circle at 215px 191px, #f5e2b099 0.7px, transparent 1.5px), radial-gradient(circle at 43px 149px, #ffffff66 0.6px, transparent 1.4px), radial-gradient(circle at 9px 336px, #f5e2b066 1.0px, transparent 1.8px), radial-gradient(circle at 75px 76px, #dadeff73 0.6px, transparent 1.4px), radial-gradient(circle at 15px 377px, #f5e2b066 0.7px, transparent 1.5px), radial-gradient(circle at 130px 495px, #dadeff73 1.0px, transparent 1.8px), radial-gradient(circle at 395px 187px, #ffffff66 0.9px, transparent 1.7px), radial-gradient(circle at 233px 255px, #dadeff73 0.9px, transparent 1.7px), radial-gradient(circle at 567px 201px, #f5e2b066 0.9px, transparent 1.7px), linear-gradient(145deg, #252a45, #141725); background-size: 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 620px 540px, 100% 100%;
+}
+.night-grid-polaroid-text *, .night-grid-polaroid-text *::before, .night-grid-polaroid-text *::after { box-sizing: border-box; }
+.night-grid-polaroid-text::before, .night-grid-polaroid-text::after { position: absolute; top: 12px; font-size: 2.5rem; line-height: 1; pointer-events: none; }
+.night-grid-polaroid-text::before { content: '🌙'; left: 10px; transform: rotate(-18deg); }
+.night-grid-polaroid-text::after { content: '🪐'; right: 10px; transform: rotate(18deg); }
+.night-grid-polaroid-text .album-heading { position: relative; margin-bottom: 45px; text-align: center; color: #f0dfb4; }
+.night-grid-polaroid-text .album-heading::before { content: 'LET THE NIGHT REMEMBER'; display: block; margin-bottom: 14px; color: #b4b6cf; font: 0.65rem Georgia, serif; letter-spacing: 0.16em; }
+.night-grid-polaroid-text .album-heading::after { content: '✦ · ✧ · ✦'; display: block; margin-top: 18px; letter-spacing: 0.25em; }
+.night-grid-polaroid-text .album-heading h2 { display: inline-block; max-width: 100%; margin: 0; padding-bottom: 10px; color: #f0dfb4; border-bottom: 2px dashed #4d506c; font-size: clamp(1.5rem, 5vw, 2.2rem); line-height: 1.4; overflow-wrap: anywhere; text-shadow: 0 0 18px #e7d1972e; }
+.night-grid-polaroid-text .album-heading p { margin: 15px 0 0; color: #b4b6cf; font-size: 0.9rem; line-height: 1.6; }
+
+/* 글씨와 사진을 같은 칸에 배치 */
+.night-grid-polaroid-text .batch-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 460px; gap: 40px 32px; isolation: isolate; }
+.night-grid-polaroid-text .captions, .night-grid-polaroid-text .photos { display: contents; }
+.night-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row2); grid-column: var(--col, 1); min-width: 0; position: relative; transform: rotate(var(--tilt, 0deg)); }
+
+/* img 하나가 폴라로이드 한 장입니다. 아래 흰 여백은 글씨가 없어도 유지됩니다. */
+.night-grid-polaroid-text .photos img {
+  display: block !important; box-sizing: border-box !important;
+  width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+  height: 460px !important; margin: 0 !important;
+  padding: 12px 12px 84px !important; object-fit: contain !important;
+  background-color: #292d45; border: 1px solid #4d506c; border-radius: 3px;
+  box-shadow: 0 6px 12px #00000066,0 0 8px #d2bb7e66,0 0 18px #d2bb7e3d; color: #e9e1d0; font-size: 0.8rem;
+  transform-origin: 50% 50%; z-index: 0;
+}
+
+/* 글씨의 회전 중심을 사진 중심에 맞춰 함께 기울어지게 합니다.
+   카드 높이 460px / 글씨 시작 236px / 중심 160px → -76px */
+.night-grid-polaroid-text .captions > p {
+  align-self: end; width: auto; height: 66px; margin: 0 18px 18px; padding: 0;
+  color: #e9e1d0; font-size: 0.95rem; line-height: 1.5; text-align: center;
+  word-break: keep-all; overflow-wrap: anywhere; overflow: auto;
+  scrollbar-width: thin; scrollbar-color: #e88432 #353950;
+  transform-origin: 50% -146px; z-index: 1;
+}
+
+/* 기울기와 열 위치 자동 반복 */
+.night-grid-polaroid-text .batch-grid > div > :nth-child(5n + 1) { --tilt: -2deg; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(5n + 2) { --tilt: 1.5deg; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(5n + 3) { --tilt: -1deg; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(5n + 4) { --tilt: 2deg; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(5n + 5) { --tilt: -0.5deg; }
+
+
+
+
+.night-grid-polaroid-text .batch-grid > div > :nth-child(odd) { --col: 1; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(even) { --col: 2; }
+
+/* 최대 50장의 사진·글씨 위치 */
+.night-grid-polaroid-text .batch-grid > div > :nth-child(1) { --row3: 1; --row2: 1; --row1: 1; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(2) { --row3: 1; --row2: 1; --row1: 2; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(3) { --row3: 1; --row2: 2; --row1: 3; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(4) { --row3: 2; --row2: 2; --row1: 4; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(5) { --row3: 2; --row2: 3; --row1: 5; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(6) { --row3: 2; --row2: 3; --row1: 6; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(7) { --row3: 3; --row2: 4; --row1: 7; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(8) { --row3: 3; --row2: 4; --row1: 8; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(9) { --row3: 3; --row2: 5; --row1: 9; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(10) { --row3: 4; --row2: 5; --row1: 10; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(11) { --row3: 4; --row2: 6; --row1: 11; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(12) { --row3: 4; --row2: 6; --row1: 12; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(13) { --row3: 5; --row2: 7; --row1: 13; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(14) { --row3: 5; --row2: 7; --row1: 14; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(15) { --row3: 5; --row2: 8; --row1: 15; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(16) { --row3: 6; --row2: 8; --row1: 16; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(17) { --row3: 6; --row2: 9; --row1: 17; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(18) { --row3: 6; --row2: 9; --row1: 18; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(19) { --row3: 7; --row2: 10; --row1: 19; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(20) { --row3: 7; --row2: 10; --row1: 20; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(21) { --row3: 7; --row2: 11; --row1: 21; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(22) { --row3: 8; --row2: 11; --row1: 22; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(23) { --row3: 8; --row2: 12; --row1: 23; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(24) { --row3: 8; --row2: 12; --row1: 24; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(25) { --row3: 9; --row2: 13; --row1: 25; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(26) { --row3: 9; --row2: 13; --row1: 26; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(27) { --row3: 9; --row2: 14; --row1: 27; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(28) { --row3: 10; --row2: 14; --row1: 28; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(29) { --row3: 10; --row2: 15; --row1: 29; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(30) { --row3: 10; --row2: 15; --row1: 30; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(31) { --row3: 11; --row2: 16; --row1: 31; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(32) { --row3: 11; --row2: 16; --row1: 32; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(33) { --row3: 11; --row2: 17; --row1: 33; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(34) { --row3: 12; --row2: 17; --row1: 34; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(35) { --row3: 12; --row2: 18; --row1: 35; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(36) { --row3: 12; --row2: 18; --row1: 36; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(37) { --row3: 13; --row2: 19; --row1: 37; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(38) { --row3: 13; --row2: 19; --row1: 38; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(39) { --row3: 13; --row2: 20; --row1: 39; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(40) { --row3: 14; --row2: 20; --row1: 40; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(41) { --row3: 14; --row2: 21; --row1: 41; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(42) { --row3: 14; --row2: 21; --row1: 42; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(43) { --row3: 15; --row2: 22; --row1: 43; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(44) { --row3: 15; --row2: 22; --row1: 44; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(45) { --row3: 15; --row2: 23; --row1: 45; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(46) { --row3: 16; --row2: 23; --row1: 46; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(47) { --row3: 16; --row2: 24; --row1: 47; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(48) { --row3: 16; --row2: 24; --row1: 48; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(49) { --row3: 17; --row2: 25; --row1: 49; }
+.night-grid-polaroid-text .batch-grid > div > :nth-child(50) { --row3: 17; --row2: 25; --row1: 50; }
+
+.night-grid-polaroid-text .album-footer { margin-top: 45px; padding-top: 18px; border-top: 1px dashed #4d506c; color: #b4b6cf; text-align: right; font-size: 0.85rem; line-height: 1.6; }
+@media (max-width: 900px) {
+  .night-grid-polaroid-text .batch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .night-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row2); }
+  .night-grid-polaroid-text .batch-grid > div > :nth-child(odd) { --col: 1; }
+  .night-grid-polaroid-text .batch-grid > div > :nth-child(even) { --col: 2; }
+}
+@media (max-width: 600px) {
+  .night-grid-polaroid-text { padding: 55px 24px 30px; }
+  .night-grid-polaroid-text .batch-grid { grid-template-columns: minmax(0, 1fr); }
+  .night-grid-polaroid-text .batch-grid > div > * { grid-row: var(--row1); grid-column: 1; }
+}
+
+/* 업로드 편집기가 추가한 p도 사진 한 칸으로 처리합니다. */
+.night-grid-polaroid-text .photos > p {
+    width: 100% !important; min-width: 0 !important; max-width: 100% !important;
+    height: 460px !important; margin: 0 !important; padding: 0 !important;
+    line-height: 0; overflow: visible;
+}
+.night-grid-polaroid-text .photos > p { transform-origin: 50% 50%; z-index: 0; }
+/* 배경 애니메이션 시작 */
+.night-grid-polaroid-text .night-sky { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; font-size: 0; line-height: 0; }
+.night-grid-polaroid-text .night-sky::before { content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 296px 85px, #ffffff 0.9px, transparent 1.7px), radial-gradient(circle at 433px 388px, #fff6d8 1.3px, transparent 2.1px), radial-gradient(circle at 196px 273px, #fff6d8 1.2px, transparent 2.0px), radial-gradient(circle at 635px 465px, #fff6d8 1.5px, transparent 2.3px), radial-gradient(circle at 87px 510px, #f5e2b0 1.2px, transparent 2.0px), radial-gradient(circle at 642px 441px, #fff6d8 1.2px, transparent 2.0px), radial-gradient(circle at 210px 36px, #f5e2b0 1.3px, transparent 2.1px), radial-gradient(circle at 176px 221px, #ffffff 1.6px, transparent 2.4px), radial-gradient(circle at 579px 377px, #ffffff 1.6px, transparent 2.4px), radial-gradient(circle at 676px 321px, #ffffff 1.3px, transparent 2.1px), radial-gradient(circle at 181px 494px, #ffffff 1.3px, transparent 2.1px), radial-gradient(circle at 691px 167px, #fff6d8 1.0px, transparent 1.8px), radial-gradient(circle at 546px 331px, #f5e2b0 1.4px, transparent 2.2px), radial-gradient(circle at 200px 596px, #fff6d8 1.0px, transparent 1.8px), radial-gradient(circle at 93px 632px, #fff6d8 1.2px, transparent 2.0px), radial-gradient(circle at 527px 36px, #dfe3ff 1.2px, transparent 2.0px), radial-gradient(circle at 448px 540px, #fff6d8 1.3px, transparent 2.1px), radial-gradient(circle at 467px 615px, #dfe3ff 1.3px, transparent 2.1px), radial-gradient(circle at 433px 454px, #ffffff 0.9px, transparent 1.7px), radial-gradient(circle at 93px 423px, #dfe3ff 0.8px, transparent 1.6px), radial-gradient(circle at 369px 442px, #fff6d8 1.3px, transparent 2.1px), radial-gradient(circle at 374px 586px, #fff6d8 1.4px, transparent 2.2px), radial-gradient(circle at 218px 517px, #ffffff 1.1px, transparent 1.9px), radial-gradient(circle at 7px 522px, #ffffff 1.3px, transparent 2.1px), radial-gradient(circle at 230px 24px, #fff6d8 1.0px, transparent 1.8px), radial-gradient(circle at 163px 22px, #ffffff 1.2px, transparent 2.0px);
+    background-size: 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 700px 600px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px, 560px 640px;
+    animation: night-twinkle 2.8s ease-in-out infinite alternate; }
+.night-grid-polaroid-text .night-sky span { position: absolute; height: 2px; border-radius: 2px; overflow: hidden; font-size: 0; line-height: 0; color: transparent;
+    background: linear-gradient(90deg, #fffbe9, #fffbe900); box-shadow: -2px 0 6px #fffbe999; opacity: 0;
+    animation: night-shoot linear infinite; }
+.night-grid-polaroid-text .night-sky span:nth-child(1) { top: 70px; left: 78%; width: 120px; animation-duration: 5.2s; animation-delay: 0.6s; }
+.night-grid-polaroid-text .night-sky span:nth-child(2) { top: 40px; left: 52%; width: 90px; animation-duration: 4.3s; animation-delay: 1.9s; }
+.night-grid-polaroid-text .night-sky span:nth-child(3) { top: 150px; left: 94%; width: 140px; animation-duration: 6.1s; animation-delay: 3.2s; }
+.night-grid-polaroid-text .night-sky span:nth-child(4) { top: 110px; left: 36%; width: 100px; animation-duration: 4.8s; animation-delay: 2.6s; }
+.night-grid-polaroid-text .night-sky span:nth-child(5) { top: 230px; left: 70%; width: 130px; animation-duration: 6.8s; animation-delay: 4.4s; }
+.night-grid-polaroid-text .night-sky span:nth-child(6) { top: 20px; left: 88%; width: 80px; animation-duration: 3.9s; animation-delay: 0.2s; }
+
+@keyframes night-twinkle { from { opacity: .15; } to { opacity: 1; } }
+@keyframes night-shoot {
+    0% { opacity: 0; transform: translate(0, 0) rotate(-30deg); }
+    2% { opacity: 1; }
+    10% { opacity: 0; transform: translate(-300px, 173px) rotate(-30deg); }
+    100% { opacity: 0; transform: translate(-300px, 173px) rotate(-30deg); }
+}
+@media (prefers-reduced-motion: reduce) { .night-grid-polaroid-text .night-sky::before { animation: none; opacity: .7; } .night-grid-polaroid-text .night-sky span { display: none; } }
+/* 배경 애니메이션 끝 */
+</style>
+
+<div class="night-grid-polaroid-text">
+    <div class="night-sky" aria-hidden="true"><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span><span>&#8203;</span></div>
+  <!-- ✏️ 1. 제목과 소제목 -->
+  <div class="album-heading">
+    <h2>제목</h2>
+    <p>소제목</p>
+  </div>
+
+  <div class="batch-grid">
+    <!-- ✏️ 2. 글씨는 여기에 한꺼번에 입력하세요.
+         사진만 쓰려면 captions 묶음을 통째로 지우세요.
+         특정 사진만 글씨를 비우려면 <p></p>를 남겨 순서를 맞추세요. -->
+    <div class="captions">
+      <p>첫 번째 사진에 하고 싶은 말</p>
+      <p>두 번째 사진에 하고 싶은 말</p>
+      <p>세 번째 사진에 하고 싶은 말</p>
+      <p>네 번째 사진에 하고 싶은 말</p>
+      <p>다섯 번째 사진에 하고 싶은 말</p>
+      <p>여섯 번째 사진에 하고 싶은 말</p>
+    </div>
+
+    <!-- ✏️ 3. 사진은 여기에 한꺼번에 입력하세요. 최대 50장.
+         img 한 줄이 폴라로이드 한 장입니다. -->
+    <div class="photos">
+      <img src="이미지링크1" alt="사진1">
+      <img src="이미지링크2" alt="사진2">
+      <img src="이미지링크3" alt="사진3">
+      <img src="이미지링크4" alt="사진4">
+      <img src="이미지링크5" alt="사진5">
+      <img src="이미지링크6" alt="사진6">
+    </div>
+  </div>
+
+  <!-- ✏️ 4. 날짜 또는 서명 -->
+  <div class="album-footer">Recorded on 202X. XX. XX.</div>
+</div>
